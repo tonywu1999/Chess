@@ -1,0 +1,11 @@
+commit f84650634ec412ebc6c306efc9d049530919bc63
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Wed Apr 25 12:09:04 2018 -0400
+
+    Added files not given by instructors
+
+commit 6e7b7392551627bfb957b520f469111c60ee84ca
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Wed Apr 25 12:05:55 2018 -0400
+
+    Created foundation for repository
