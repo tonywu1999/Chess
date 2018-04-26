@@ -87,6 +87,7 @@ bool Board::has_valid_kings( void ) const
 void Board::display( void ) const
 {
 	// Display the board
+	
 	cout << *this << endl;
 	
 }
@@ -98,7 +99,7 @@ std::ostream& operator << ( std::ostream& os , const Board& board )
 	{
 		for( char c='A' ; c<='H' ; c++ )
 		{
-			const Piece* piece = board( std::pair< char , char >( c , r ) );
+			const Piece* piece = board( pair< char , char >( c , r ) );
 			if( piece ) os << piece->to_ascii();
 			else        os << '-';
 		}
