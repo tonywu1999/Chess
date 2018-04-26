@@ -1,17 +1,26 @@
 #include <iostream>
 #include <utility>
 #include <map>
+#include <vector>
 #ifndef _WIN32
 #include "Terminal.h"
 #endif // !_WIN32
 #include "Board.h"
 #include "CreatePiece.h"
+#include "Piece.h"
+#include <algorithm>
 
+using std::cout;
+using std::endl;
+using std::map;
+using std::vector;
+using std::pair;
+using std::find;
 
 // DO NOT MODIFY THIS FUNCTION!!!! //
 Board::Board( void ){}
 
-const Piece* Board::operator()( std::pair< char , char > position ) const
+const Piece* Board::operator()( pair< char , char > position ) const
 {		
 	if(_occ.find(position) != _occ.end()) {
 		// This position is occupied by a piece
@@ -21,7 +30,7 @@ const Piece* Board::operator()( std::pair< char , char > position ) const
 	return NULL;
 }
 
-bool Board::add_piece( std::pair< char , char > position , char piece_designator )
+bool Board::add_piece( pair< char , char > position , char piece_designator )
 {
 	
 	if(_occ.find(position) != _occ.end()) {
@@ -57,8 +66,8 @@ bool Board::has_valid_kings( void ) const
 {
 	int black_king = 0;
 	int white_king = 0;
-	for(map<pair<char, char>, Piece*>::iterator it = _occ.begin();
-			it != _occ.end(); ++it) {
+	for(map<pair<char, char>, Piece*>::const_iterator it = _occ.cbegin();
+			it != _occ.cend(); ++it) {
 		if((it->second)->to_ascii() == 'K') {
 			white_king = white_king + 1;
 		}
