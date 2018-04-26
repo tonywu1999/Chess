@@ -15,7 +15,7 @@ const Piece* Board::operator()( std::pair< char , char > position ) const
 {		
 	if(_occ.find(position) != _occ.end()) {
 		// This position is occupied by a piece
-		Piece* my_pointer = &position;
+		Piece* my_pointer = (_occ.find(position))->second;
 		return my_pointer;
 	}
 	return NULL;
@@ -57,12 +57,12 @@ bool Board::has_valid_kings( void ) const
 {
 	int black_king = 0;
 	int white_king = 0;
-	for(map<pair<char, char>, char>::iterator it = _occ.begin();
+	for(map<pair<char, char>, Piece*>::iterator it = _occ.begin();
 			it != _occ.end(); ++it) {
-		if(it->second == 'K') {
+		if((it->second)->to_ascii() == 'K') {
 			white_king = white_king + 1;
 		}
-		else if(it->second == 'k') {
+		else if((it->second)->to_ascii() == 'k') {
 			black_king = black_king + 1;
 		}
 	}
