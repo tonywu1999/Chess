@@ -41,7 +41,7 @@ bool Board::add_piece( pair< char , char > position , char piece_designator )
 		// Wrong Letter
 		return false;
 	}
-	if(position.second < 1 || position.second > 8) {
+	if(position.second < '1' || position.second > '8') {
 		// Wrong Number
 		return false;
 	}
