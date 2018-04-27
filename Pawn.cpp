@@ -32,7 +32,7 @@ bool Pawn::legal_move_shape( pair< char , char > start , pair< char , char > end
 		}
 		else {
 			if((end.first - start.first) != 1) {
-				// Pawn does not move forward two spaces from start position
+				// Pawn does not move forward one space
 				return false;
 			}
 			else {
@@ -53,7 +53,7 @@ bool Pawn::legal_move_shape( pair< char , char > start , pair< char , char > end
                 }
                 else {
                         if((start.first - end.first) != 1) {
-                                // Pawn does not move forward two spaces from start position
+                                // Pawn does not move forward one space
                                 return false;
                         }
                         else {
