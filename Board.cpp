@@ -30,6 +30,19 @@ const Piece* Board::operator()( pair< char , char > position ) const
 	return NULL;
 }
 
+// Tony added this remove_piece function
+bool Board::remove_piece(pair<char, char> position) {
+        if(_occ.find(position) != _occ.end()) {
+                // Erase Something
+                _occ.erase(position);
+                return true;
+        }
+        else {
+                // Could not find key
+                return false;
+        }
+}
+
 bool Board::add_piece( pair< char , char > position , char piece_designator )
 {
 	
