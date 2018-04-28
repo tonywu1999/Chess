@@ -8,8 +8,11 @@ class Rook : public Piece
 public:
 	bool legal_move_shape( std::pair< char , char > start , std::pair< char , char > end ) const;
 	
-	// Add Destructor
+	bool legal_capture_shape( std::pair< char , char > start , std::pair< char , char > end ) const {
+                return legal_move_shape(start, end);
+        }
 
+        ~Rook() { }
 	/////////////////////////////////////
 	// DO NOT MODIFY THIS FUNCTION!!!! //
 	/////////////////////////////////////

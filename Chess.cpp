@@ -66,6 +66,10 @@ bool Chess::make_move( std::pair< char , char > start , std::pair< char , char >
 		return false;
 	}
 
+	if(!(_board.check_end_location(start, end))) {
+		return false;
+	}
+
 	// Check endpoint 
 	
 	return true;

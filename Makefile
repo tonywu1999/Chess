@@ -4,8 +4,8 @@ DEBUGGING_FLAGS = -g -O0
 CFLAGS = $(CONSERVATIVE_FLAGS) $(DEBUGGING_FLAGS)
 
 
-chess: main.o Board.o Chess.o CreatePiece.o
-	$(CC) -o chess main.o Board.o Chess.o CreatePiece.o
+chess: main.o Board.o Chess.o CreatePiece.o King.o Knight.o Pawn.o Queen.o Rook.o Bishop.o
+	$(CC) -o chess main.o Board.o Chess.o CreatePiece.o King.o Knight.o Pawn.o Queen.o Rook.o Bishop.o
 
 #Board.o: Board.cpp Bishop.h Board.h King.h Knight.h Mystery.h Pawn.h Piece.h CreatePiece.h Queen.h Rook.h Terminal.h
 #	$(CC) -c Board.cpp $(CFLAGS)
