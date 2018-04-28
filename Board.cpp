@@ -179,6 +179,28 @@ bool Board::path_is_clear(std::pair<char, char> start, std::pair<char, char> end
 	return false;
 }
 
+// Checks end position piece to see if it is empty or if it is the same color as the piece
+// Adds piece to end location if true
+// Returns false if same piece
+bool check_end_location(pair<char, char> start, pair<char, char> end) {
+        // End spot is empty, piece is able to move to spot
+        if(_occ.find(end) == _occ.end()) {
+                _occ[end] = [_occ[start]->to_ascii()];
+                _occ.erase(start);      
+                return true;
+        }
+        // Piece tries capturing piece of same color
+        if((_occ[start]->to_ascii() - _occ[end]->to_ascii()) < 26) {
+                return false;
+        }
+        // Piece tries capturing piece of different color
+        else {
+                _occ[end] = [_occ[start]->to_ascii()];
+                _occ.erase(start);
+                return true;
+        }
+}
+
 // Loops through map to see if there's either 'K' or 'k'
 // If there's one each, return true, else return false
 bool Board::has_valid_kings( void ) const

@@ -39,6 +39,11 @@ public:
 	// -- if the specified location is occupied
 	bool add_piece( std::pair< char , char > position , char piece_designator );
 
+	// Checks end position piece to see if it is empty or if it is the same color as the piece
+	// Adds piece to end location if true
+	// Returns false if same piece	
+	bool check_end_location(pair<char, char> start, pair<char, char> end);
+
 	// Displays the board by printing it to stdout
 	void display( void ) const;
 
