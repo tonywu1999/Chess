@@ -182,10 +182,10 @@ bool Board::path_is_clear(std::pair<char, char> start, std::pair<char, char> end
 // Checks end position piece to see if it is empty or if it is the same color as the piece
 // Adds piece to end location if true
 // Returns false if same piece
-bool check_end_location(pair<char, char> start, pair<char, char> end) {
+bool Board::check_end_location(pair<char, char> start, pair<char, char> end) {
         // End spot is empty, piece is able to move to spot
         if(_occ.find(end) == _occ.end()) {
-                _occ[end] = _occ[start]->to_ascii();
+                _occ[end] = _occ[start];
                 _occ.erase(start);      
                 return true;
         }
@@ -195,7 +195,7 @@ bool check_end_location(pair<char, char> start, pair<char, char> end) {
         }
         // Piece tries capturing piece of different color
         else {
-                _occ[end] = _occ[start]->to_ascii();
+                _occ[end] = _occ[start];
                 _occ.erase(start);
                 return true;
         }
