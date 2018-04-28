@@ -23,7 +23,7 @@ bool Bishop::legal_move_shape( pair< char , char > start , pair< char , char > e
         }
 	int m = abs(start.first - end.first);
 	int n = abs(start.second - end.second);
-	if(abs(m/n) = 1) {
+	if(abs(m/n) == 1) {
 		// Bishop moves in a diagonal direction
 		return true;
 	}

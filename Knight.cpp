@@ -4,8 +4,8 @@
 
 using std::pair;
 
-bool Knight::legal_move_shape( pair< char , char > start , pair< char , char > end ) const
-        if(start.first < 'A' || start.first > 'H' ||
+bool Knight::legal_move_shape( pair< char , char > start , pair< char , char > end ) const {        
+	if(start.first < 'A' || start.first > 'H' ||
                         end.first < 'A' || end.first > 'H') {
                 // Not a legal move. Too far horizotal off board
                 return false;
@@ -22,11 +22,11 @@ bool Knight::legal_move_shape( pair< char , char > start , pair< char , char > e
 
 	int m = abs(start.first - end.first);
 	int n = abs(start.second - end.first);
-	if(m = 2 && n = 1) {
+	if(m == 2 && n == 1) {
 		// Knight moves more left or right than up or down
 		return true;
 	}
-	else if(m = 1 && n = 2) {
+	else if(m == 1 && n == 2) {
 		// Knight moves more up or down than left or right
 		return true;
 	}

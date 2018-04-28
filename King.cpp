@@ -1,13 +1,12 @@
-#include "Board.h"
 #include "Piece.h"
 #include "King.h"
 
 using std::pair;
 
-bool King::legal_move_shape(pair< char , char > start , pair< char , char > end, Board& b ) const {
+bool King::legal_move_shape(pair< char , char > start , pair< char , char > end ) const {
 	// Finds the movement of the piece
-	h_move = start.first - end.first;
-	v_move = start.second - end.second;
+	char h_move = start.first - end.first;
+	char v_move = start.second - end.second;
 	// Checks to make sure that the piece moved
 	if(h_move == 0 && v_move == 0) {
 		return false;
