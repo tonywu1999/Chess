@@ -132,56 +132,51 @@ bool path_is_clear(std::pair<char, char> start, std::pair<char, char> end) {
 		return true;
 	}
 	// Checks for diagonal movement
-	switch(dir) {
-		case "ne":
-			for(int i = 0; i < h_abs; i++) {
-				cur_pt.first += 1;
-				cur_pt.second += 1;
-				if(_occ.find(cur_pt) != _occ.end()) {
-					return false;
-				}
+	if(dir == "ne") {
+		for(int i = 0; i < h_abs; i++) {
+			cur_pt.first += 1;
+			cur_pt.second += 1;
+			if(_occ.find(cur_pt) != _occ.end()) {
+				return false;
 			}
-			return true;	
-	
-		case "nw":
-			for(int i = 0; i < h_abs; i++) {
-				cur_pt.first -= 1;
-				cur_pt.second += 1;
-				if(_occ.find(cur_pt) != _occ.end()) {
-					return false;
-				}
-			}
-			return true;	
-	
-		case "se":
-			for(int i = 0; i < h_abs; i++) {
-				cur_pt.first += 1;
-				cur_pt.second -= 1;
-				if(_occ.find(cur_pt) != _occ.end()) {
-					return false;
-				}
-			}
-			return true;	
-	
-		case "sw":
-			for(int i = 0; i < h_abs; i++) {
-				cur_pt.first -= 1;
-				cur_pt.second -= 1;
-				if(_occ.find(cur_pt) != _occ.end()) {
-					return false;
-				}
-			}
-			return true;
-	
-		default:
-			return false;
 		}
-
+		return true;
+	}	
+	else if(dir == "nw") {
+		for(int i = 0; i < h_abs; i++) {
+			cur_pt.first -= 1;
+			cur_pt.second += 1;
+			if(_occ.find(cur_pt) != _occ.end()) {
+				return false;
+			}
+		}
+		return true;	
+	}
+	else if(dir == "se") {
+		for(int i = 0; i < h_abs; i++) {
+			cur_pt.first += 1;
+			cur_pt.second -= 1;
+			if(_occ.find(cur_pt) != _occ.end()) {
+				return false;
+			}
+		}
+		return true;	
+	}
+	else if(dir == "sw") {
+		for(int i = 0; i < h_abs; i++) {
+			cur_pt.first -= 1;
+			cur_pt.second -= 1;
+			if(_occ.find(cur_pt) != _occ.end()) {
+				return false;
+			}
+		}
+		return true;
+	}
 	// Checks for non-line shape
 	if(h_move != 0 && v_move != 0 && h_move != v_move) {
 		return true;
 	}
-	return true;
+	return false;
 }
 
 // Loops through map to see if there's either 'K' or 'k'
