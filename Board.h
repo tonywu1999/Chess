@@ -42,7 +42,7 @@ public:
 	// Checks end position piece to see if it is empty or if it is the same color as the piece
 	// Adds piece to end location if true
 	// Returns false if same piece	
-	bool check_end_location(pair<char, char> start, pair<char, char> end);
+	bool check_end_location(std::pair<char, char> start, std::pair<char, char> end);
 
 	// Displays the board by printing it to stdout
 	void display( void ) const;
