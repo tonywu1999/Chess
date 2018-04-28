@@ -60,6 +60,9 @@ bool Chess::make_move( std::pair< char , char > start , std::pair< char , char >
 	}
 	
 	// Check if path is clear
+	if(!(_board.path_is_clear(start,end))) {
+		return false;
+	}
 
 	// Check endpoint 
 	
