@@ -18,6 +18,7 @@ public:
 	/////////////////////////////////////
 	char to_ascii( void ) const { return is_white() ? 'P' : 'p'; }
 
+
 private:
 	/////////////////////////////////////
 	// DO NOT MODIFY THIS FUNCTION!!!! //

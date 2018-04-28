@@ -53,29 +53,40 @@ bool Chess::make_move( std::pair< char , char > start , std::pair< char , char >
 
 	// Check if first_piece is NULL
 	if(first_piece == NULL) {
+		cout << "Starting piece is NULL" << endl;
 		return false;
 	}
 
 	// Check if first_piece makes a legal move assuming no pieces around
 	if(!(first_piece->legal_move_shape(start, end))) {
+		cout << "Not a legal move shape" << endl;
 		return false;
 	}
 	
 	// Check if path is clear
 	if(!(_board.path_is_clear(start,end))) {
-		return false;
-	}
-
-	if(!(_board.check_end_location(start, end))) {
+		cout << "Path is NOT clear" << endl;
 		return false;
 	}
 
 	// Check endpoint 
-	
+	if(!(_board.check_end_location(start, end))) {
+		cout << "Endpoint is occupied by teammate" << endl;
+		return false;
+	}
+
+	// Change color of player:
+	if(_turn_white) {
+		_turn_white = false;
+	}
+	else {
+		_turn_white = true;
+	}	
 	return true;
 }
 bool Chess::in_check( bool white ) const
 {
+	/*
 	char king;
 	if( white ) {
 		king = 'K';
@@ -107,7 +118,8 @@ bool Chess::in_check( bool white ) const
 				// }
 			}
 		}
-	}		
+	}
+*/	
 	return false;
 }
 
@@ -115,6 +127,7 @@ bool Chess::in_mate( bool white ) const
 {
 	// Checks all of the one space around the king to see if king can move one space away to avoid check. 
 	// Maybe move this into King class later?
+	/*
 	char king;
 	if( white ) {
 		king = 'K';
@@ -132,7 +145,7 @@ bool Chess::in_mate( bool white ) const
 	int h_move = -1;
 	int v_move = -1;
 	// Check spaces around the king
-	/*
+	
 	for(h_move) {
 
 	}

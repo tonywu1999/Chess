@@ -1,3 +1,215 @@
+commit 3ccb7f531daf392565846cf52f22208d5a259f9b
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Sat Apr 28 18:43:14 2018 -0400
+
+    Make Chess is dope.  Going ham
+
+commit eb8eb3add9f863247c0ec969fd82e67079070a2d
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Sat Apr 28 18:06:45 2018 -0400
+
+    Vtable problem
+
+commit bbcfb732fb68f83ccf167df252673209f80eb7ce
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Sat Apr 28 18:02:01 2018 -0400
+
+    Capturing Complete
+
+commit ff770d9d25346077f110a688da72254cd6a43f8b
+Author: Andrew <azheng4@jhu.edu>
+Date:   Sat Apr 28 17:59:21 2018 -0400
+
+    Board.cpp
+
+commit f5d1c31447624c4c28fc969668179426ca4aab22
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Sat Apr 28 17:58:57 2018 -0400
+
+    Board.h
+
+commit 63643424ce432aa6917cfb1b8c5962c588e0ae92
+Author: Andrew <azheng4@jhu.edu>
+Date:   Sat Apr 28 17:53:29 2018 -0400
+
+    Capture
+
+commit a9ec20d7e2e67938f9f6e142622a0427f917c481
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Sat Apr 28 17:17:25 2018 -0400
+
+    Board compilable
+
+commit fa9272b421be0265521d6387e4aee53e49091d92
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Sat Apr 28 17:14:49 2018 -0400
+
+    Need iterators
+
+commit f490b60c697c3c6f84b1b178eb31d91fe4fbe34b
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Sat Apr 28 17:11:23 2018 -0400
+
+    Fix ur compiler errors b
+
+commit 108167e94926a49ba97a9258bef9c287249c93e5
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Sat Apr 28 16:47:03 2018 -0400
+
+    loading function should work
+
+commit 9fd7cb45c5f780405c49cdd8cb96f10a2eeb29dc
+Merge: 3253032 df9de52
+Author: Alex Lim <alim16@jhu.edu>
+Date:   Sat Apr 28 16:15:57 2018 -0400
+
+    Merge branch 'master' of https://bitbucket.org/awu42/final_project
+
+commit 325303242da103ee137af7be2ebc836e1aa48351
+Author: Alex Lim <alim16@jhu.edu>
+Date:   Sat Apr 28 16:15:20 2018 -0400
+
+    is_legal_move should be good
+
+commit df9de52cb03b3da9c225ad7509e5d2b0a6ad02ca
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Sat Apr 28 11:15:20 2018 -0400
+
+    Chess working
+
+commit 91a7f41906d40d06fc106b298c08ac3b592483e5
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Sat Apr 28 11:09:55 2018 -0400
+
+    Waiting on board functions
+
+commit 5c8ef9db8111e04f4341ed1ddf9771167aa103a5
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Sat Apr 28 10:50:10 2018 -0400
+
+    Chess.cpp is compilable
+
+commit aa4b09fe9d5b106e23c3041d6d50bda0a88a91fd
+Author: Alex Lim <alim16@jhu.edu>
+Date:   Sat Apr 28 10:39:10 2018 -0400
+
+    Added getter function for _occ
+
+commit 3c2a4c3ac9b03a7a3d2b6008f1758f1f178345bb
+Author: Alex Lim <alim16@jhu.edu>
+Date:   Sat Apr 28 10:25:28 2018 -0400
+
+    added make Board
+
+commit 38c08b34bb87b893a45c4b5709c49cf687731cdb
+Author: Alex Lim <alim16@jhu.edu>
+Date:   Sat Apr 28 10:20:36 2018 -0400
+
+    In check should be okay, in mate is WOP
+
+commit 48743fc722bb91db7565143dddd7612c74f3432b
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Fri Apr 27 20:50:54 2018 -0400
+
+    Compilable
+
+commit 4243885089fa5e3e3fbb44d39e1e0c0caa152cdf
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Fri Apr 27 20:45:51 2018 -0400
+
+    Rooks
+
+commit 1b89483d57fdead9f18481c3094d20c65a53bed7
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Fri Apr 27 20:44:29 2018 -0400
+
+    Makefile Adjusted
+
+commit deab34d15850a40ea6b145cfdd838300db20d3f5
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Fri Apr 27 20:09:48 2018 -0400
+
+    modified board
+
+commit 6f2779e29744f0b55cc20a751a5a2c3e2198407d
+Author: Andrew <azheng4@jhu.edu>
+Date:   Fri Apr 27 18:06:10 2018 -0400
+
+    Pawn.cpp
+
+commit 39f491fc02a6c50b363cc2cd52c1554872850a00
+Author: Andrew <azheng4@jhu.edu>
+Date:   Fri Apr 27 17:57:22 2018 -0400
+
+    Four more pieces
+
+commit 18272b067f4b69c2bbd6d73c61c7882320cc69ef
+Merge: 699c747 020bdb4
+Author: Alex Lim <alim16@jhu.edu>
+Date:   Fri Apr 27 16:58:44 2018 -0400
+
+    Merge branch 'master' of https://bitbucket.org/awu42/final_project
+
+commit 699c747793b3accd0fde501c33486f484ebf0d0b
+Author: Alex Lim <alim16@jhu.edu>
+Date:   Fri Apr 27 16:58:00 2018 -0400
+
+    Added the is_legal_move
+
+commit 020bdb4430cce2f50c0f418cc091c2c512a60bab
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Fri Apr 27 15:52:36 2018 -0400
+
+    Added color_at function for board
+
+commit 6eb12b18cd5957d14f76745e6ee38a0f88a1d4e3
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Fri Apr 27 15:41:14 2018 -0400
+
+    Added Remove_Piece function in board.cpp
+
+commit dcea99ae8d3eca6ad3c34d737f5a74ada219514a
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Fri Apr 27 15:23:39 2018 -0400
+
+    Edited Rook.cpp
+
+commit 6fc220b8402fe18de768fd23e01ab7ed65358034
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Fri Apr 27 15:06:15 2018 -0400
+
+    Board.cpp modified
+
+commit b8ffa657ee3ad95f74ecc630ce2c919755dc2178
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Thu Apr 26 14:24:21 2018 -0400
+
+    Can print board, but not sure if it should be all minus signs
+
+commit 8c2f608dfbf06a7b41894e7fe24f2f0bc95a6066
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Thu Apr 26 13:59:16 2018 -0400
+
+    Board.cpp no compile errors
+
+commit fdea5f6e89aae65fa806980dab677ea473842c70
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Thu Apr 26 13:43:04 2018 -0400
+
+    Hope there are no compile errors
+
+commit 06349b88f1485079c4183bc1934f84a3f1809b28
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Thu Apr 26 13:31:32 2018 -0400
+
+    Edited Board.cpp a ton
+
+commit 8289c440a3d7564cb90d42dfecd70d3f1d46dbda
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Wed Apr 25 12:27:39 2018 -0400
+
+    README and gitlog.txt initalized
+
 commit f84650634ec412ebc6c306efc9d049530919bc63
 Author: Anthony Wu <awu42@jhu.edu>
 Date:   Wed Apr 25 12:09:04 2018 -0400

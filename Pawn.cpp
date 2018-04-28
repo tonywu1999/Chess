@@ -2,6 +2,8 @@
 #include "Pawn.h"
 #include "Piece.h"
 
+using std::cout;
+using std::endl;
 using std::pair;
 
 bool Pawn::legal_move_shape( pair< char , char > start , pair< char , char > end ) const {
@@ -11,18 +13,19 @@ bool Pawn::legal_move_shape( pair< char , char > start , pair< char , char > end
                 return false;
         }
         if(start.second < '1' || start.second > '8' ||
-                        end.second < '1' || end.first > '8') {
+                        end.second < '1' || end.second > '8') {
                 // Not a legal move.  Too far vertical off board
                 return false;
         }
         if(start.first == end.first && start.second == end.second) {
                 // Pawn did not move at all
-                return false;
+		return false;
         }
 	if(is_white() == true) {
 		// White pawn
 		if(start.second == '2') {
-			if((end.first - start.first) != 2) {
+			if((end.second - start.second) != 2 && 
+					(end.second - start.second) != 1) {
 				// Pawn does not move forward two spaces from start position
 				return false;
 			}
@@ -31,7 +34,7 @@ bool Pawn::legal_move_shape( pair< char , char > start , pair< char , char > end
 			}
 		}
 		else {
-			if((end.first - start.first) != 1) {
+			if((end.second - start.second) != 1) {
 				// Pawn does not move forward one space
 				return false;
 			}
@@ -43,7 +46,8 @@ bool Pawn::legal_move_shape( pair< char , char > start , pair< char , char > end
 	else {
 		// Black pawn
                 if(start.second == '7') {
-                        if((start.first - end.first) != 2) {
+                        if((start.second - end.second) != 2 && 
+					(start.second - end.second) != 1) {
                                 // Pawn does not move forward two spaces from start position
                                 return false;
                         }
@@ -52,7 +56,7 @@ bool Pawn::legal_move_shape( pair< char , char > start , pair< char , char > end
                         }
                 }
                 else {
-                        if((start.first - end.first) != 1) {
+                        if((start.second - end.second) != 1) {
                                 // Pawn does not move forward one space
                                 return false;
                         }

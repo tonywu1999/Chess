@@ -11,7 +11,7 @@ bool Queen::legal_move_shape( pair< char , char > start , pair< char , char > en
                 return false;
         }
         if(start.second < '1' || start.second > '8' ||
-                        end.second < '1' || end.first > '8') {
+                        end.second < '1' || end.second > '8') {
                 // Not a legal move. Too far vertical off board
                 return false;
         }

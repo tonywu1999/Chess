@@ -15,7 +15,7 @@ bool Rook::legal_move_shape( pair< char , char > start , pair< char , char > end
 		return false;
 	}
 	if(start.second < '1' || start.second > '8' || 
-                        end.second < '1' || end.first > '8') {
+                        end.second < '1' || end.second > '8') {
 		// Not Legal Move.  Too far vertical off board
 		return false;
 	}
