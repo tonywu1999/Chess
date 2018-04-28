@@ -1,4 +1,7 @@
 #include "Chess.h"
+#include <iterator>
+
+using std::map;
 
 /////////////////////////////////////
 // DO NOT MODIFY THIS FUNCTION!!!! //
@@ -46,13 +49,65 @@ bool Chess::make_move( std::pair< char , char > start , std::pair< char , char >
 }
 bool Chess::in_check( bool white ) const
 {
-	/////////////////////////
-	// [REPLACE THIS STUB] //
-	/////////////////////////
+	char king;
+	if( white ) {
+		king = 'K';
+	} else {
+		king = 'k';
+	}
+
+	map<std::pair<char, char>, Piece*> occurences = _board.occ();
+	std::pair<char, char> end;
+	std::pair<char, char> start;
+	// Finds where the king in question is
+	for(map<std::pair<char, char>, Piece*>::const_iterator it = occurences.cbegin(); it != occurences.cend; ++it) {
+		if(it->second->to_ascii() == king) {
+			end = it->first;
+			break;
+		}	
+	}
+	// Runs through the rest of the map
+	for(map<std::pair<char, char>, Piece*>::const_iterator it = occurences.cbegin(); it != occurences.cend; ++it) {
+		// Ensures not the same king again
+		if(it->second->to_ascii() != king) {
+			start = it->first;
+			// If possible move by the piece, check if the path is clear
+			if(it->second->legal_move_shape(start, end)) {
+				if(it->second->to_ascii() == 'n' || it->second->to_ascii() == 'N') {
+					return true;
+				} // else if(_board.INSERT_CLEAR_MOVE_HERE) {
+				//	return true;
+				// }
+			}
+		}
+	}		
 	return false;
 }
+
 bool Chess::in_mate( bool white ) const
 {
+	// Checks all of the one space around the king to see if king can move one space away to avoid check. 
+	// Maybe move this into King class later?
+	char king;
+	if( white ) {
+		king = 'K';
+	} else {
+		king = 'k';
+	}
+	std::pair<char, char> start;
+	// Finds where the king in question is
+	for(map<std::pair<char, char>, Piece*>::const_iterator it = occurences.cbegin(); it != occurences.cend; ++it) {
+		if(it->second->to_ascii() == king) {
+			start = it->first;
+		}
+	}
+	int h_move = -1;
+	int v_move = -1;
+	// Check spaces around the king
+	for(h_move) {
+
+	}
+	if(
 	/////////////////////////
 	// [REPLACE THIS STUB] //
 	/////////////////////////
