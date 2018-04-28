@@ -2,14 +2,12 @@
 #define ROOK_H
 
 #include "Piece.h"
-#include "Board.h"
 
 class Rook : public Piece
 {
 public:
 	bool legal_move_shape( std::pair< char , char > start , std::pair< char , char > end ) const;
 
-	bool legal_capture_shape( std::pair< char , char > start , std::pair< char , char > end) const;
 	
 	// Add Destructor
 

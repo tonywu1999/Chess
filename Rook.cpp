@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Rook.h"
-#include "Board.h"
 #include "Piece.h"
 
 using std::pair;
@@ -28,21 +27,8 @@ bool Rook::legal_move_shape( pair< char , char > start , pair< char , char > end
 		// Rook did not move at all
 		return false;
 	}
-	// Scenario 1: Rook moves vertically
-	if(start.first != end.first) {
-		
-	}
-	// Scenario 2: Rook moves horizontally
-	else {
-
-	}
 	
 	return true;
 
 }
 
-bool Rook::legal_capture_shape( std::pair< char , char > start , std::pair< char , char > end) const {
-	
-	return false;
-
-}
