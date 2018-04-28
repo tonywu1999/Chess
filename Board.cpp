@@ -9,6 +9,7 @@
 #include "CreatePiece.h"
 #include "Piece.h"
 #include <algorithm>
+#include <string>
 
 using std::cout;
 using std::endl;
@@ -17,6 +18,7 @@ using std::vector;
 using std::pair;
 using std::find;
 using std::make_pair;
+using std::string;
 
 // DO NOT MODIFY THIS FUNCTION!!!! //
 Board::Board( void ){}
@@ -131,49 +133,49 @@ bool path_is_clear(std::pair<char, char> start, std::pair<char, char> end) {
 	}
 	// Checks for diagonal movement
 	switch(dir) {
-	case "ne":
-		for(int i = 0; i < h_abs; i++) {
-			cur_pt.first += 1;
-			cur_pt.second += 1;
-			if(_occ.find(cur_pt) != _occ.end()) {
-				return false;
+		case "ne":
+			for(int i = 0; i < h_abs; i++) {
+				cur_pt.first += 1;
+				cur_pt.second += 1;
+				if(_occ.find(cur_pt) != _occ.end()) {
+					return false;
+				}
 			}
-		}
-		return true;	
+			return true;	
 	
-	case "nw":
-		for(int i = 0; i < h_abs; i++) {
-			cur_pt.first -= 1;
-			cur_pt.second += 1;
-			if(_occ.find(cur_pt) != _occ.end()) {
-				return false;
+		case "nw":
+			for(int i = 0; i < h_abs; i++) {
+				cur_pt.first -= 1;
+				cur_pt.second += 1;
+				if(_occ.find(cur_pt) != _occ.end()) {
+					return false;
+				}
 			}
-		}
-		return true;	
+			return true;	
 	
-	case "se":
-		for(int i = 0; i < h_abs; i++) {
-			cur_pt.first += 1;
-			cur_pt.second -= 1;
-			if(_occ.find(cur_pt) != _occ.end()) {
-				return false;
+		case "se":
+			for(int i = 0; i < h_abs; i++) {
+				cur_pt.first += 1;
+				cur_pt.second -= 1;
+				if(_occ.find(cur_pt) != _occ.end()) {
+					return false;
+				}
 			}
-		}
-		return true;	
+			return true;	
 	
-	case "sw":
-		for(int i = 0; i < h_abs; i++) {
-			cur_pt.first -= 1;
-			cur_pt.second -= 1;
-			if(_occ.find(cur_pt) != _occ.end()) {
-				return false;
+		case "sw":
+			for(int i = 0; i < h_abs; i++) {
+				cur_pt.first -= 1;
+				cur_pt.second -= 1;
+				if(_occ.find(cur_pt) != _occ.end()) {
+					return false;
+				}
 			}
-		}
-		return true;	
+			return true;
 	
-	default:
-		return false;
-	}
+		default:
+			return false;
+		}
 
 	// Checks for non-line shape
 	if(h_move != 0 && v_move != 0 && h_move != v_move) {

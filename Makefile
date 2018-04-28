@@ -14,10 +14,13 @@ chess: main.o Board.o Chess.o CreatePiece.o
 #Chess.o: Chess.cpp Board.h Chess.h Piece.h
 #	$(CC) -c Chess.cpp $(CFLAGS)
 
+#CreatePiece.o: CreatePiece.cpp Bishop.h Board.h Chess.h King.h Knight.h Mystery.h Pawn.h Piece.h CreatePiece.h Queen.h Rook.h
+#	$(CC) -c CreatePiece.cpp $(CFLAGS)
+
 Chess.o: Chess.cpp Board.cpp Chess.h Piece.h
 	$(CC) -c Chess.cpp $(CFLAGS)
 
-CreatePiece.o: CreatePiece.cpp Bishop.h Board.h Chess.h King.h Knight.h Mystery.h Pawn.h Piece.h CreatePiece.h Queen.h Rook.h
+CreatePiece.o: CreatePiece.cpp Bishop.cpp Board.cpp Chess.cpp King.cpp Knight.cpp Mystery.h Pawn.cpp Piece.h CreatePiece.h Queen.cpp Rook.cpp
 	$(CC) -c CreatePiece.cpp $(CFLAGS)
 
 main.o: main.cpp Bishop.h Board.h Chess.h King.h Knight.h Mystery.h Pawn.h Piece.h CreatePiece.h Queen.h Rook.h
