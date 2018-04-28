@@ -16,6 +16,7 @@ using std::map;
 using std::vector;
 using std::pair;
 using std::find;
+using std::make_pair;
 
 // DO NOT MODIFY THIS FUNCTION!!!! //
 Board::Board( void ){}
@@ -60,6 +61,124 @@ bool Board::add_piece( pair< char , char > position , char piece_designator )
 		return false;
 	}
 	_occ[ position ] = create_piece( piece_designator );
+	return true;
+}
+// Checks path is clear, does not check if the 
+// Returns true if path is clear
+// Returns true if not moving in a line
+bool path_is_clear(std::pair<char, char> start, std::pair<char, char> end) {
+	int h_move = start.first - end.first;
+	int v_move = start.second - end.second;
+	// For counting reasons
+	int h_abs = std::abs(h_move) - 1;
+	int v_abs = std::abs(v_move) - 1;
+
+	pair<char, char> cur_pt = start;
+	
+	string dir;
+	if(h_move > 0) {
+		if(v_move > 0) {
+			dir = "ne";
+		} else {
+			dir = "se";
+		}
+	} else {
+		if(v_move > 0) {
+			dir = "nw";
+		} else {
+			dir = "sw";
+		}
+	}
+	// Checks vertical movement
+	if(h_move == 0) {
+		if(v_move > 0) {
+			for(int i = 0; i < v_abs; i++) {
+				cur_pt.second += 1
+				if(_occ.find(cur_pt) != _occ.end()) {
+					return false;
+				}
+			}
+		} else {
+			for(int i = 0; i < v_abs; i++) {
+				cur_pt.second -= 1
+				if(_occ.find(cur_pt) != _occ.end()) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
+	// Checks horizontal movement
+	if(v_move == 0) {
+		if(h_move > 0) {
+			for(int i = 0; i < h_abs; i++) {
+				cur_pt.first += 1;
+				if(_occ.find(cur_pt) != _occ.end()) {
+					return false;
+				}
+			}	
+		} else {
+			for(int i = 0; i < h_abs; i++) {
+				cur_pt.first -= 1;
+				if(_occ.find(cur_pt) != _occ.end()) {
+					return false;
+				}
+			}
+
+		}
+		return true;
+	}
+	// Checks for diagonal movement
+	switch(dir) {
+	case "ne":
+		for(int i = 0; i < h_abs; i++) {
+			cur_pt.first += 1;
+			cur_pt.second += 1;
+			if(_occ.find(cur_pt) != _occ.end()) {
+				return false;
+			}
+		}
+		return true;	
+	
+	case "nw":
+		for(int i = 0; i < h_abs; i++) {
+			cur_pt.first -= 1;
+			cur_pt.second += 1;
+			if(_occ.find(cur_pt) != _occ.end()) {
+				return false;
+			}
+		}
+		return true;	
+	
+	case "se":
+		for(int i = 0; i < h_abs; i++) {
+			cur_pt.first += 1;
+			cur_pt.second -= 1;
+			if(_occ.find(cur_pt) != _occ.end()) {
+				return false;
+			}
+		}
+		return true;	
+	
+	case "sw":
+		for(int i = 0; i < h_abs; i++) {
+			cur_pt.first -= 1;
+			cur_pt.second -= 1;
+			if(_occ.find(cur_pt) != _occ.end()) {
+				return false;
+			}
+		}
+		return true;	
+	
+	default:
+		return false;
+	}
+
+	// Checks for non-line shape
+	if(h_move != 0 && v_move != 0 && h_move != v_move) {
+		return true;
+	}
 	return true;
 }
 
