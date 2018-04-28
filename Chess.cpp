@@ -2,6 +2,7 @@
 #include <iterator>
 
 using std::map;
+using std::pair;
 
 /////////////////////////////////////
 // DO NOT MODIFY THIS FUNCTION!!!! //
@@ -42,10 +43,30 @@ Chess::Chess( void ) : _turn_white( true )
 
 bool Chess::make_move( std::pair< char , char > start , std::pair< char , char > end )
 {
-	/////////////////////////
-	// [REPLACE THIS STUB] //
-	/////////////////////////
-	return false;
+	// Get a pointer to the first piece
+	const Piece* first_piece = _board(start);
+
+	// Get a pointer to the end piece
+	const Piece* end_piece = _board(end);
+
+	// Check if first_piece is NULL
+	if(first_piece == NULL) {
+		return false;
+	}
+
+	// Check if first_piece makes a legal move assuming no pieces around
+	if(!(first_piece->legal_move_shape(start, end))) {
+		return false;
+	}
+	
+	// Check if path is clear
+	if(!(_board.path_is_clear(start,end))) {
+		return false;
+	}
+
+	// Check endpoint 
+	
+	return true;
 }
 bool Chess::in_check( bool white ) const
 {
@@ -56,18 +77,18 @@ bool Chess::in_check( bool white ) const
 		king = 'k';
 	}
 
-	map<std::pair<char, char>, Piece*> occurences = _board.occ();
+	map<pair<char, char>, Piece*> occurences = _board.occ();
 	std::pair<char, char> end;
 	std::pair<char, char> start;
 	// Finds where the king in question is
-	for(map<std::pair<char, char>, Piece*>::const_iterator it = occurences.cbegin(); it != occurences.cend; ++it) {
+	for(map<pair<char, char>, Piece*>::const_iterator it = occurences.cbegin(); it != occurences.cend(); ++it) {
 		if(it->second->to_ascii() == king) {
 			end = it->first;
 			break;
 		}	
 	}
 	// Runs through the rest of the map
-	for(map<std::pair<char, char>, Piece*>::const_iterator it = occurences.cbegin(); it != occurences.cend; ++it) {
+	for(map<std::pair<char, char>, Piece*>::const_iterator it = occurences.cbegin(); it != occurences.cend(); ++it) {
 		// Ensures not the same king again
 		if(it->second->to_ascii() != king) {
 			start = it->first;
@@ -95,8 +116,9 @@ bool Chess::in_mate( bool white ) const
 		king = 'k';
 	}
 	std::pair<char, char> start;
+	map<pair<char, char>, Piece*> occurences = _board.occ();
 	// Finds where the king in question is
-	for(map<std::pair<char, char>, Piece*>::const_iterator it = occurences.cbegin(); it != occurences.cend; ++it) {
+	for(map<pair<char, char>, Piece*>::const_iterator it = occurences.cbegin(); it != occurences.cend(); ++it) {
 		if(it->second->to_ascii() == king) {
 			start = it->first;
 		}
@@ -104,10 +126,14 @@ bool Chess::in_mate( bool white ) const
 	int h_move = -1;
 	int v_move = -1;
 	// Check spaces around the king
+	/*
 	for(h_move) {
 
 	}
-	if(
+	if(true) {
+
+	}
+	*/
 	/////////////////////////
 	// [REPLACE THIS STUB] //
 	/////////////////////////
@@ -133,8 +159,6 @@ std::ostream& operator << ( std::ostream& os , const Chess& chess )
 
 std::istream& operator >> ( std::istream& is , Chess& chess )
 {
-	/////////////////////////
-	// [REPLACE THIS STUB] //
-	/////////////////////////
+	// Loading: Must Fix
 	return is;
 }
