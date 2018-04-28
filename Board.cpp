@@ -30,41 +30,8 @@ const Piece* Board::operator()( pair< char , char > position ) const
 	return NULL;
 }
 
-// Tony added this color_at function
-bool Board::color_at(pair<char, char> position) const {
-        if(_occ.find(position) != _occ.end()) {
-                if((_occ.find(position)->second)->to_ascii() <= 'z' && (_occ.find(position)->second)->to_ascii() >= 'a') {
-                        // Black Piece is here
-                        return 0; 
-                }
-                else if((_occ.find(position)->second)->to_ascii() <= 'Z' && (_occ.find(position)->second)->to_ascii() >= 'A') {
-                        // White Piece is here
-                        return 1;
-                }
-                else {
-                        // Invalid type of piece is here
-                        return -1;
-                }
-        }
-        else {
-                // There is no piece here
-                return -1;
-        }
-}
 
 
-// Tony added this remove_piece function
-bool Board::remove_piece(pair<char, char> position) {
-        if(_occ.find(position) != _occ.end()) {
-                // Erase Something
-                _occ.erase(position);
-                return true;
-        }
-        else {
-                // Could not find key
-                return false;
-        }
-}
 
 bool Board::add_piece( pair< char , char > position , char piece_designator )
 {
