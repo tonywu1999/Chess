@@ -8,7 +8,7 @@ class King : public Piece
 public:
 	bool legal_move_shape( std::pair< char , char > start , std::pair< char , char > end ) const;
 	
-	virtual ~King() { }
+	~King() { }
 	/////////////////////////////////////
 	// DO NOT MODIFY THIS FUNCTION!!!! //
 	/////////////////////////////////////
