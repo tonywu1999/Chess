@@ -3,6 +3,8 @@
 
 using std::map;
 using std::pair;
+using std::endl;
+using std::cout;
 
 /////////////////////////////////////
 // DO NOT MODIFY THIS FUNCTION!!!! //
@@ -159,6 +161,24 @@ std::ostream& operator << ( std::ostream& os , const Chess& chess )
 
 std::istream& operator >> ( std::istream& is , Chess& chess )
 {
-	// Loading: Must Fix
+	
+	char piece;
+	char number = '8';
+	while (number > '0') {
+		char letter = 'A';
+		while(letter <= 'H') {
+			is >> piece;
+			if(piece != '-') {
+				// I think board() is const	
+				chess.board2().add_piece(pair< char , char >( letter , number ) , piece );
+			}
+			letter = letter + 1;
+				
+		}
+		number = number - 1;
+		is >> piece; // Reads new line character
+	}
+	is >> piece;
+	chess.set_turn_white(piece);
 	return is;
 }
