@@ -43,10 +43,27 @@ Chess::Chess( void ) : _turn_white( true )
 
 bool Chess::make_move( std::pair< char , char > start , std::pair< char , char > end )
 {
-	/////////////////////////
-	// [REPLACE THIS STUB] //
-	/////////////////////////
-	return false;
+	// Get a pointer to the first piece
+	const Piece* first_piece = _board(start);
+
+	// Get a pointer to the end piece
+	const Piece* end_piece = _board(end);
+
+	// Check if first_piece is NULL
+	if(first_piece == NULL) {
+		return false;
+	}
+
+	// Check if first_piece makes a legal move assuming no pieces around
+	if(!(first_piece->legal_move_shape(start, end))) {
+		return false;
+	}
+	
+	// Check if path is clear
+
+	// Check endpoint 
+	
+	return true;
 }
 bool Chess::in_check( bool white ) const
 {
@@ -139,8 +156,6 @@ std::ostream& operator << ( std::ostream& os , const Chess& chess )
 
 std::istream& operator >> ( std::istream& is , Chess& chess )
 {
-	/////////////////////////
-	// [REPLACE THIS STUB] //
-	/////////////////////////
+	// Loading: Must Fix
 	return is;
 }
