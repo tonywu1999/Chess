@@ -21,7 +21,7 @@ bool Queen::legal_move_shape( pair< char , char > start , pair< char , char > en
         }
         int m = abs(start.first - end.first);
         int n = abs(start.second - end.second);
-        if(abs(m/n) = 1) {
+        if(abs(m/n) == 1) {
                 // Queen moves in a diagonal direction
                 return true;
         }
