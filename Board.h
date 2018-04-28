@@ -26,6 +26,12 @@ public:
 	// Returns a const pointer to the piece at a prescribed location if it exists, or a NULL pointer if there is nothing there.
 	const Piece* operator() ( std::pair< char , char > position ) const;
 
+	// Returns a reference to the occurences of the pieces
+	const std::map<std::pair<char, char>, Piece*>& occ( void ) const { return _occ; }	
+
+	// Finds if the path is clear
+	bool path_is_clear(std::pair<char, char> start, std::pair<char, char> end);
+
 	// Attempts to add a new piece with the specified designator, at the given location.
 	// Returns false if:
 	// -- the designator is invalid,
