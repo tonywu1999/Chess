@@ -29,7 +29,7 @@ CreatePiece.o: CreatePiece.cpp Bishop.cpp Board.cpp Chess.cpp King.cpp Knight.cp
 main.o: main.cpp Bishop.cpp Board.cpp Chess.cpp King.cpp Knight.cpp Mystery.h Pawn.cpp Piece.h CreatePiece.cpp Queen.cpp Rook.cpp
 	$(CC) -c main.cpp $(CFLAGS)
 
-Board.o: Board.cpp Bishop.cpp Board.h King.cpp Knight.cpp Mystery.h Pawn.cpp Piece.h CreatePiece.h Queen.cpp Rook.cpp Terminal.h
+Board.o: Board.cpp Bishop.cpp Board.h King.cpp Knight.cpp Mystery.h Pawn.cpp Piece.h CreatePiece.cpp Queen.cpp Rook.cpp Terminal.h
 	$(CC) -c Board.cpp $(CFLAGS)
 
 Queen.o: Queen.cpp Queen.h Piece.h

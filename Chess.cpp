@@ -94,7 +94,6 @@ bool Chess::make_move( std::pair< char , char > start , std::pair< char , char >
 }
 bool Chess::in_check( bool white ) const
 {
-	/*
 	char king;
 	if( white ) {
 		king = 'K';
@@ -102,32 +101,37 @@ bool Chess::in_check( bool white ) const
 		king = 'k';
 	}
 
-	map<pair<char, char>, Piece*> occurences = _board.occ();
-	std::pair<char, char> end;
-	std::pair<char, char> start;
+	pair<char, char> start;
+	pair<char, char> end;
 	// Finds where the king in question is
-	for(map<pair<char, char>, Piece*>::const_iterator it = occurences.cbegin(); it != occurences.cend(); ++it) {
+	for(map<pair<char, char>, Piece*>::const_iterator it = _board.occ().cbegin(); it != _board.occ().cend(); ++it) {
 		if(it->second->to_ascii() == king) {
 			end = it->first;
 			break;
 		}	
 	}
 	// Runs through the rest of the map
-	for(map<std::pair<char, char>, Piece*>::const_iterator it = occurences.cbegin(); it != occurences.cend(); ++it) {
+	for(map<pair<char, char>, Piece*>::const_iterator it = _board.occ().cbegin(); it != _board.occ().cend(); ++it) {
 		// Ensures not the same king again
 		if(it->second->to_ascii() != king) {
 			start = it->first;
-			// If possible move by the piece, check if the path is clear
-			if(it->second->legal_move_shape(start, end)) {
-				if(it->second->to_ascii() == 'n' || it->second->to_ascii() == 'N') {
-					return true;
-				} // else if(_board.INSERT_CLEAR_MOVE_HERE) {
-				//	return true;
-				// }
-			}
+			// Make sure piece is opposite color to continue for check
+			if(abs(it->second->to_ascii() - king) > 26) {
+				// If possible move by the piece, check if the path is clear
+				if(it->second->legal_move_shape(start, end)) {
+					if(king == 'k') {
+						if(it->second->to_ascii() == 'N') {
+							return true;
+						}
+					} else if(king == 'K') {
+						if(it->second->to_ascii() == 'n') {
+							return true;
+						}
+					}
+				}
+			}	
 		}
 	}
-*/	
 	return false;
 }
 
