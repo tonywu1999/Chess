@@ -253,7 +253,7 @@ void Board::execute_move(pair<char, char> start, pair<char, char> end) {
 
 void Board::reverse_execute(pair<char, char> start, pair<char, char> end, Piece* first_piece, Piece* end_piece) {
 	_occ[start] = first_piece;
-	if(first_piece == NULL) {
+	if(end_piece == NULL) {
 		_occ.erase(end);
 	}
 	else {
