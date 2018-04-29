@@ -50,6 +50,8 @@ public:
 	// Returns true if the board has the right number of kings on it
 	bool has_valid_kings( void ) const;
 
+	void clear_board() { _occ.clear(); }
+
 private:
 	// The sparse map storing the pieces, keyed off locations
 	std::map< std::pair< char , char > , Piece* > _occ;

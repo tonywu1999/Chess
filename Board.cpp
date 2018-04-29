@@ -229,6 +229,7 @@ bool Board::check_end_location(pair<char, char> start, pair<char, char> end) {
         }
 }
 
+
 // Loops through map to see if there's either 'K' or 'k'
 // If there's one each, return true, else return false
 bool Board::has_valid_kings( void ) const

@@ -183,6 +183,9 @@ std::ostream& operator << ( std::ostream& os , const Chess& chess )
 
 std::istream& operator >> ( std::istream& is , Chess& chess )
 {
+
+	// Erase the _occ board map:
+	chess.board2().clear_board();
 	
 	char piece;
 	char number = '8';
@@ -198,7 +201,7 @@ std::istream& operator >> ( std::istream& is , Chess& chess )
 				
 		}
 		number = number - 1;
-		is >> piece; // Reads new line character
+		// is >> piece; // Reads new line character
 	}
 	is >> piece;
 	chess.set_turn_white(piece);
