@@ -46,11 +46,13 @@ Chess::Chess( void ) : _turn_white( true )
 
 bool Chess::make_move( std::pair< char , char > start , std::pair< char , char > end )
 {
-	// Get a pointer to the first piece
+	// Get const pointers to the first and end piece
 	const Piece* first_piece = _board(start);
-
-	// Get a pointer to the end piece
 	const Piece* end_piece = _board(end);
+
+	// Get non-const pointers to the first and end piece
+	Piece* first = _board.get_piece_pointer(start);
+	Piece* last = _board.get_piece_pointer(end);
 
 	// Check if first_piece is NULL
 	if(first_piece == NULL) {
@@ -83,6 +85,13 @@ bool Chess::make_move( std::pair< char , char > start , std::pair< char , char >
 	
 	// Execute Move
 	_board.execute_move(start, end);
+
+	// Check if board is in check now
+	if(in_check(_turn_white)) {
+		cout << "Move would result in your king in check" << endl;
+		_board.reverse_execute(start, end, first, last);
+		return false;
+	}
 
 	// Change color of player:
 	if(_turn_white) {

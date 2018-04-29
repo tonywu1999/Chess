@@ -33,6 +33,14 @@ const Piece* Board::operator()( pair< char , char > position ) const
 	return NULL;
 }
 
+Piece* Board::get_piece_pointer ( pair< char, char > position ) const {
+	if(_occ.find(position) != _occ.end()) {
+                // This position is occupied by a piece
+                Piece* my_pointer = (_occ.find(position))->second;
+                return my_pointer;
+        }
+        return NULL;
+}
 
 
 
@@ -243,6 +251,15 @@ void Board::execute_move(pair<char, char> start, pair<char, char> end) {
 	_occ.erase(start);
 }
 
+void Board::reverse_execute(pair<char, char> start, pair<char, char> end, Piece* first_piece, Piece* end_piece) {
+	_occ[start] = first_piece;
+	if(first_piece == NULL) {
+		_occ.erase(end);
+	}
+	else {
+		_occ[end] = end_piece;
+	}
+}
 
 // Loops through map to see if there's either 'K' or 'k'
 // If there's one each, return true, else return false

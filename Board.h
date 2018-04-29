@@ -26,6 +26,8 @@ public:
 	// Returns a const pointer to the piece at a prescribed location if it exists, or a NULL pointer if there is nothing there.
 	const Piece* operator() ( std::pair< char , char > position ) const;
 
+	// Returns a non_const pointer to the piece at a prescribed location
+	Piece* get_piece_pointer ( std::pair< char, char > position ) const;
 	// Returns a reference to the occurences of the pieces
 	const std::map<std::pair<char, char>, Piece*>& occ( void ) const { return _occ; }	
 
@@ -45,7 +47,8 @@ public:
 	
 	// Adds piece to end location
 	void execute_move(std::pair<char, char> start, std::pair<char, char> end);
-	
+	void reverse_execute(std::pair<char, char> start, 
+		std::pair<char, char> end, Piece* first_piece, Piece* end_piece);	
 	// Displays the board by printing it to stdout
 	void display( void ) const;
 
