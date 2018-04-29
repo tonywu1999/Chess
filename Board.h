@@ -30,7 +30,7 @@ public:
 	const std::map<std::pair<char, char>, Piece*>& occ( void ) const { return _occ; }	
 
 	// Finds if the path is clear
-	bool path_is_clear(std::pair<char, char> start, std::pair<char, char> end);
+	bool path_is_clear(std::pair<char, char> start, std::pair<char, char> end) const;
 
 	// Attempts to add a new piece with the specified designator, at the given location.
 	// Returns false if:

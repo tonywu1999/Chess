@@ -68,7 +68,7 @@ bool Board::add_piece( pair< char , char > position , char piece_designator )
 // Checks path is clear, does not check if the 
 // Returns true if path is clear
 // Returns true if not moving in a line
-bool Board::path_is_clear(std::pair<char, char> start, std::pair<char, char> end) {
+bool Board::path_is_clear(std::pair<char, char> start, std::pair<char, char> end) const {
 	char h_move = end.first - start.first;
 	char v_move = end.second - start.second;
 	// For counting reasons

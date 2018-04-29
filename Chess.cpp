@@ -1,5 +1,6 @@
 #include "Chess.h"
 #include <iterator>
+#include <cctype>
 
 using std::map;
 using std::pair;
@@ -119,19 +120,15 @@ bool Chess::in_check( bool white ) const
 			if(abs(it->second->to_ascii() - king) > 26) {
 				// If possible move by the piece, check if the path is clear
 				if(it->second->legal_move_shape(start, end)) {
-					if(king == 'k') {
-						if(it->second->to_ascii() == 'N') {
-							return true;
-						}
-					} else if(king == 'K') {
-						if(it->second->to_ascii() == 'n') {
-							return true;
-						}
+					if(it->second->to_ascii() == 'N' || it->second->to_ascii() == 'n') {
+						return true;
+					} else if(_board.path_is_clear(start, end)) {
+						return true;
 					}
-				}
-			}	
+				} 
+			}
 		}
-	}
+	}	
 	return false;
 }
 
@@ -173,10 +170,33 @@ bool Chess::in_mate( bool white ) const
 
 bool Chess::in_stalemate( bool white ) const
 {
-	/////////////////////////
-	// [REPLACE THIS STUB] //
-	/////////////////////////
-	return false;
+	/*
+	for(map<pair<char, char>, Piece*>::const_iterator it =
+                        _board.occ().cbegin(); it != _board.occ().cend(); ++it) {
+                
+		if(it->second->is_white() == white) {
+                        if(toupper(it->second->to_ascii()) == 'K') {
+				continue;
+			}
+			pair<char, char> hypo_position = make_pair('A', '1');
+
+                        for(int i = 0; i < 8; i++) {
+                                for(int j = 0; j < 8; j++) {
+                                        if(_board.legal_move_shape(it->first, hypo_position)) {
+                                                if(_board.path_is_clear(it->first, hypo_position)) {
+                                                        if(_board.check_end_location(it->first, hypo_position)) {
+                                                                return false;
+                                                        }
+                                                }
+                                        }
+                                        hypo_position.first += 1;
+                                }
+                                hypo_position.second += 1;
+                        }
+                }
+        }
+	*/
+        return false;
 }
 
 /////////////////////////////////////
