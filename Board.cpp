@@ -69,8 +69,8 @@ bool Board::add_piece( pair< char , char > position , char piece_designator )
 // Returns true if path is clear
 // Returns true if not moving in a line
 bool Board::path_is_clear(std::pair<char, char> start, std::pair<char, char> end) {
-	int h_move = start.first - end.first;
-	int v_move = start.second - end.second;
+	char h_move = end.first - start.first;
+	char v_move = end.second - start.second;
 	// For counting reasons
 	int h_abs = std::abs(h_move) - 1;
 	int v_abs = std::abs(v_move) - 1;
@@ -78,19 +78,6 @@ bool Board::path_is_clear(std::pair<char, char> start, std::pair<char, char> end
 	pair<char, char> cur_pt = start;
 	
 	string dir;
-	if(h_move > 0) {
-		if(v_move > 0) {
-			dir = "ne";
-		} else {
-			dir = "se";
-		}
-	} else {
-		if(v_move > 0) {
-			dir = "nw";
-		} else {
-			dir = "sw";
-		}
-	}
 	// Checks vertical movement
 	if(h_move == 0) {
 		if(v_move > 0) {
@@ -100,7 +87,8 @@ bool Board::path_is_clear(std::pair<char, char> start, std::pair<char, char> end
 					return false;
 				}
 			}
-		} else {
+		} 
+		else {
 			for(int i = 0; i < v_abs; i++) {
 				cur_pt.second -= 1;
 				if(_occ.find(cur_pt) != _occ.end()) {
@@ -130,6 +118,19 @@ bool Board::path_is_clear(std::pair<char, char> start, std::pair<char, char> end
 
 		}
 		return true;
+	}
+	if(h_move > 0) {
+		if(v_move > 0) {
+			dir = "ne";
+		} else {
+			dir = "se";
+		}
+	} else {
+		if(v_move > 0) {
+			dir = "nw";
+		} else {
+			dir = "sw";
+		}
 	}
 	// Checks for diagonal movement
 	if(dir == "ne") {
