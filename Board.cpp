@@ -184,6 +184,7 @@ bool Board::path_is_clear(std::pair<char, char> start, std::pair<char, char> end
 // Returns false if same piece
 bool Board::check_end_location(pair<char, char> start, pair<char, char> end) {
 	// Movement for pawn
+	/*
 	if(_occ[start]->to_ascii() = 'P' || _occ[start]->to_ascii() = 'p') {
 		if(abs(start.first - end.first) = 1 && abs(start.second - end.second) = 1) {
 			// Pawn tries to move diagonally but there is no piece there
@@ -209,6 +210,7 @@ bool Board::check_end_location(pair<char, char> start, pair<char, char> end) {
 			}	
 		}
 	}
+	*/
 	// End spot is empty, piece is able to move to spot
         if(_occ.find(end) == _occ.end()) {
                 _occ[end] = _occ[start];
