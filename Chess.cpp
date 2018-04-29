@@ -57,6 +57,11 @@ bool Chess::make_move( std::pair< char , char > start , std::pair< char , char >
 		return false;
 	}
 
+	if(first_piece->is_white() != _turn_white) {
+		cout << "Wrong Color" << endl;
+		return false;
+	}
+
 	// Check if first_piece makes a legal move assuming no pieces around
 	if(!(first_piece->legal_move_shape(start, end))) {
 		cout << "Not a legal move shape" << endl;
@@ -71,7 +76,7 @@ bool Chess::make_move( std::pair< char , char > start , std::pair< char , char >
 
 	// Check endpoint 
 	if(!(_board.check_end_location(start, end))) {
-		cout << "Endpoint is occupied by teammate" << endl;
+		cout << "Cannot place piece at end location" << endl;
 		return false;
 	}
 
