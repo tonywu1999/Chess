@@ -193,9 +193,21 @@ bool Board::check_end_location(pair<char, char> start, pair<char, char> end) {
 			}
 			// Pawn tries to move diagnoally and there is a piece there
 			else {
-				_occ[end] = _occ[start];
-               			_occ.erase(start);
-                		return true;
+				if(end.second == '8') {
+					_occ.erase(start);
+					_occ.erase(end);
+					add_piece(end, 'Q');
+				}
+				else if(end.second == '1') {
+					_occ.erase(start);
+                                        _occ.erase(end);
+                                        add_piece(end, 'q');
+				}
+				else {
+					_occ[end] = _occ[start];
+               				_occ.erase(start);
+				}
+				return true;
 			}
 		}
 		else if(abs(start.second - end.second) == 1) {
@@ -205,8 +217,20 @@ bool Board::check_end_location(pair<char, char> start, pair<char, char> end) {
 			}
 			// Pawn tries to move vertically and space is empty
 			else {
-				_occ[end] = _occ[start];
-                		_occ.erase(start);
+				if(end.second == '8') {
+                                        _occ.erase(start);
+                                        _occ.erase(end);
+                                        add_piece(end, 'Q');
+                                }
+                                else if(end.second == '1') {
+                                        _occ.erase(start);
+                                        _occ.erase(end);
+                                        add_piece(end, 'q');
+				}
+				else {
+					_occ[end] = _occ[start];
+                			_occ.erase(start);
+				}
 				return true;
 			}	
 		}
