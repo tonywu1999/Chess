@@ -19,9 +19,8 @@ bool Knight::legal_move_shape( pair< char , char > start , pair< char , char > e
                 // Knight did not move at all
                 return false;
         }
-
 	int m = abs(start.first - end.first);
-	int n = abs(start.second - end.first);
+	int n = abs(start.second - end.second);
 	if(m == 2 && n == 1) {
 		// Knight moves more left or right than up or down
 		return true;
