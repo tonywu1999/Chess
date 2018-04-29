@@ -193,20 +193,6 @@ bool Board::check_end_location(pair<char, char> start, pair<char, char> end) {
 			}
 			// Pawn tries to move diagnoally and there is a piece there
 			else {
-				if(end.second == '8') {
-					_occ.erase(start);
-					_occ.erase(end);
-					add_piece(end, 'Q');
-				}
-				else if(end.second == '1') {
-					_occ.erase(start);
-                                        _occ.erase(end);
-                                        add_piece(end, 'q');
-				}
-				else {
-					_occ[end] = _occ[start];
-               				_occ.erase(start);
-				}
 				return true;
 			}
 		}
@@ -217,28 +203,12 @@ bool Board::check_end_location(pair<char, char> start, pair<char, char> end) {
 			}
 			// Pawn tries to move vertically and space is empty
 			else {
-				if(end.second == '8') {
-                                        _occ.erase(start);
-                                        _occ.erase(end);
-                                        add_piece(end, 'Q');
-                                }
-                                else if(end.second == '1') {
-                                        _occ.erase(start);
-                                        _occ.erase(end);
-                                        add_piece(end, 'q');
-				}
-				else {
-					_occ[end] = _occ[start];
-                			_occ.erase(start);
-				}
 				return true;
 			}	
 		}
 	}
 	// End spot is empty, piece is able to move to spot
         if(_occ.find(end) == _occ.end()) {
-                _occ[end] = _occ[start];
-                _occ.erase(start);
                 return true;
         }
         // Piece tries capturing piece of same color
@@ -247,10 +217,30 @@ bool Board::check_end_location(pair<char, char> start, pair<char, char> end) {
         }
         // Piece tries capturing piece of different color
         else {
-                _occ[end] = _occ[start];
-                _occ.erase(start);
                 return true;
         }
+}
+
+void Board::execute_move(pair<char, char> start, pair<char, char> end) {
+	if((_occ[start]->to_ascii() == 'P') || (_occ[start]->to_ascii() == 'p')) {
+		if(end.second == '8') {
+		 	_occ.erase(start);
+			_occ.erase(end);
+			add_piece(end, 'Q');
+		}
+		else if(end.second == '1') {
+			_occ.erase(start);
+			_occ.erase(end);
+			add_piece(end, 'q');
+		}
+		else {
+			_occ[end] = _occ[start];
+			_occ.erase(start);
+		}
+		return;
+	}
+	_occ[end] = _occ[start];
+	_occ.erase(start);
 }
 
 

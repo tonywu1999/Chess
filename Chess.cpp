@@ -79,6 +79,9 @@ bool Chess::make_move( std::pair< char , char > start , std::pair< char , char >
 		cout << "Cannot place piece at end location" << endl;
 		return false;
 	}
+	
+	// Execute Move
+	_board.execute_move(start, end);
 
 	// Change color of player:
 	if(_turn_white) {
