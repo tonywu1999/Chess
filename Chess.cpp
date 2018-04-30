@@ -131,15 +131,13 @@ bool Chess::in_check( bool white ) const
 				cout << it->second->to_ascii() << endl;
 				// If possible move by the piece, check if the path is clear
 				if(it->second->legal_move_shape(start, end)) {
-					if(it->second->to_ascii() == 'N' || it->second->to_ascii() == 'n') {
-						return true;
-					} else if(_board.path_is_clear(start, end)) {
-						cout << "blah" << endl;
+					if(_board.path_is_clear(start, end)) {
+					cout << "blah" << endl;
 						if(_board.check_end_location(start, end)) {
 							cout << "yeet" << endl;
 							return true;
 						}
-					}
+					}	
 				} 
 			}
 		}
