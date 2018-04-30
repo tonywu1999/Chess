@@ -191,9 +191,9 @@ bool Board::path_is_clear(std::pair<char, char> start, std::pair<char, char> end
 // Checks end position piece to see if it is empty or if it is the same color as the piece
 // Adds piece to end location if true
 // Returns false if same piece
-bool Board::check_end_location(pair<char, char> start, pair<char, char> end) {
+bool Board::check_end_location(pair<char, char> start, pair<char, char> end) const {
 	// Movement for pawn
-	if((_occ[start]->to_ascii() == 'P') || (_occ[start]->to_ascii() == 'p')) {
+	if((_occ(start)->to_ascii() == 'P') || (_occ(start)->to_ascii() == 'p')) {
 		if(abs(start.first - end.first) == 1 && abs(start.second - end.second) == 1) {
 			// Pawn tries to move diagonally but there is no piece there
 			if(_occ.find(end) == _occ.end()) {
@@ -220,13 +220,14 @@ bool Board::check_end_location(pair<char, char> start, pair<char, char> end) {
                 return true;
         }
         // Piece tries capturing piece of same color
-        if(abs(_occ[start]->to_ascii() - _occ[end]->to_ascii()) < 26) {
+        if(abs(_occ(start)->to_ascii() - _occ(end)->to_ascii()) < 26) {
                 return false;
         }
         // Piece tries capturing piece of different color
         else {
                 return true;
         }
+	return false;
 }
 
 void Board::execute_move(pair<char, char> start, pair<char, char> end) {

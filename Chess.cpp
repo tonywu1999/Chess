@@ -117,6 +117,7 @@ bool Chess::in_check( bool white ) const
 	for(map<pair<char, char>, Piece*>::const_iterator it = _board.occ().cbegin(); it != _board.occ().cend(); ++it) {
 		if(it->second->to_ascii() == king) {
 			end = it->first;
+			cout << end.first << end.second << endl;
 			break;
 		}	
 	}
@@ -132,7 +133,9 @@ bool Chess::in_check( bool white ) const
 					if(it->second->to_ascii() == 'N' || it->second->to_ascii() == 'n') {
 						return true;
 					} else if(_board.path_is_clear(start, end)) {
-						return true;
+						if(_board.check_end_location(start, end)) {
+							return true;
+						}
 					}
 				} 
 			}

@@ -43,7 +43,7 @@ public:
 
 	// Checks end position piece to see if it is empty or if it is the same color as the piece
 	// Returns false if same piece	
-	bool check_end_location(std::pair<char, char> start, std::pair<char, char> end);
+	bool check_end_location(std::pair<char, char> start, std::pair<char, char> end) const;
 	
 	// Adds piece to end location
 	void execute_move(std::pair<char, char> start, std::pair<char, char> end);
