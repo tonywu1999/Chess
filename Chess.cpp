@@ -48,7 +48,7 @@ bool Chess::make_move( std::pair< char , char > start , std::pair< char , char >
 {
 	// Get const pointers to the first and end piece
 	const Piece* first_piece = _board(start);
-	const Piece* end_piece = _board(end);
+	// const Piece* end_piece = _board(end);
 
 	// Get non-const pointers to the first and end piece
 	Piece* first = _board.get_piece_pointer(start);
@@ -127,13 +127,16 @@ bool Chess::in_check( bool white ) const
 		if(it->second->to_ascii() != king) {
 			start = it->first;
 			// Make sure piece is opposite color to continue for check
-			if(abs(it->second->to_ascii() - king) > 26) {
+			if(abs(it->second->to_ascii() - king) >  15) {
+				cout << it->second->to_ascii() << endl;
 				// If possible move by the piece, check if the path is clear
 				if(it->second->legal_move_shape(start, end)) {
 					if(it->second->to_ascii() == 'N' || it->second->to_ascii() == 'n') {
 						return true;
 					} else if(_board.path_is_clear(start, end)) {
+						cout << "blah" << endl;
 						if(_board.check_end_location(start, end)) {
+							cout << "yeet" << endl;
 							return true;
 						}
 					}
@@ -148,6 +151,9 @@ bool Chess::in_mate( bool white ) const
 {
 	// Checks all of the one space around the king to see if king can move one space away to avoid check. 
 	// Maybe move this into King class later?
+	if( white ) {
+		return false;
+	}
 	/*
 	char king;
 	if( white ) {
@@ -182,6 +188,9 @@ bool Chess::in_mate( bool white ) const
 
 bool Chess::in_stalemate( bool white ) const
 {
+	if( white ) {
+		return false;
+	}
 	/*
 	for(map<pair<char, char>, Piece*>::const_iterator it =
                         _board.occ().cbegin(); it != _board.occ().cend(); ++it) {
