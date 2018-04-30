@@ -117,7 +117,6 @@ bool Chess::in_check( bool white ) const
 	for(map<pair<char, char>, Piece*>::const_iterator it = _board.occ().cbegin(); it != _board.occ().cend(); ++it) {
 		if(it->second->to_ascii() == king) {
 			end = it->first;
-			cout << end.first << end.second << endl;
 			break;
 		}	
 	}
@@ -127,14 +126,11 @@ bool Chess::in_check( bool white ) const
 		if(it->second->to_ascii() != king) {
 			start = it->first;
 			// Make sure piece is opposite color to continue for check
-			if(abs(it->second->to_ascii() - king) >  15) {
-				cout << it->second->to_ascii() << endl;
+			if(white != (it->second)->is_white()) {
 				// If possible move by the piece, check if the path is clear
 				if(it->second->legal_move_shape(start, end)) {
 					if(_board.path_is_clear(start, end)) {
-					cout << "blah" << endl;
 						if(_board.check_end_location(start, end)) {
-							cout << "yeet" << endl;
 							return true;
 						}
 					}	
