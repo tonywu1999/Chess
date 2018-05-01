@@ -182,36 +182,36 @@ bool Chess::in_mate( bool white ) const
 
 bool Chess::in_stalemate( bool white ) const
 {
-	if( white ) {
-		return false;
-	}
-	/*
-	for(map<pair<char, char>, Piece*>::const_iterator it =
-                        _board.occ().cbegin(); it != _board.occ().cend(); ++it) {
-                
-		if(it->second->is_white() == white) {
-                        if(toupper(it->second->to_ascii()) == 'K') {
-				continue;
-			}
-			pair<char, char> hypo_position = make_pair('A', '1');
-
-                        for(int i = 0; i < 8; i++) {
-                                for(int j = 0; j < 8; j++) {
-                                        if(_board.legal_move_shape(it->first, hypo_position)) {
-                                                if(_board.path_is_clear(it->first, hypo_position)) {
-                                                        if(_board.check_end_location(it->first, hypo_position)) {
-                                                                return false;
-                                                        }
-                                                }
-                                        }
-                                        hypo_position.first += 1;
-                                }
-                                hypo_position.second += 1;
-                        }
-                }
+	char king;
+        if( white ) {
+                king = 'K';
+        } else {
+                king = 'k';
         }
-	*/
-        return false;
+
+	pair<char, char> start;
+	pair<char, char> end;
+
+	// Runs through the map
+	for(map<pair<char, char>, Piece*>::const_iterator it = _board.occ().cbegin(); 
+			it!= _board.occ().cend(); ++it) {
+		if(it->second->to_ascii() != king) {
+			start = it->first;
+			if(white == (it->second)->is_white()) {
+				if(it->second->legal_move_shape(start, end)) {
+					return false;
+				}			
+				else if(_board.path_is_clear(start, end)) {
+                                	return false;
+				}
+				if(_board.check_end_location(start, end)) {
+                        		return false;
+				}
+				return true;		
+			}
+		}
+	}
+	return true;
 }
 
 /////////////////////////////////////
