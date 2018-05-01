@@ -143,11 +143,11 @@ bool Chess::in_check( bool white ) const
 
 bool Chess::in_mate( bool white ) const
 {
-	// Checks all of the one space around the king to see if king can move one space away to avoid check. 
-	// Maybe move this into King class later?
-	if( white ) {
-		return false;
+	// King is not in check, return false
+	if(!in_check(white)) {
+		return false;	
 	}
+	// Checks all of the one space around the king to see if king can move one space away to avoid check. 
 	/*
 	char king;
 	if( white ) {
