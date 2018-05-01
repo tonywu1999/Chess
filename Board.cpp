@@ -77,8 +77,8 @@ bool Board::add_piece( pair< char , char > position , char piece_designator )
 // Returns true if path is clear
 // Returns true if not moving in a line
 bool Board::path_is_clear(std::pair<char, char> start, std::pair<char, char> end) const {
-	char h_move = end.first - start.first;
-	char v_move = end.second - start.second;
+	int h_move = end.first - start.first;
+	int v_move = end.second - start.second;
 	// For counting reasons
 	int h_abs = std::abs(h_move) - 1;
 	int v_abs = std::abs(v_move) - 1;
@@ -220,7 +220,7 @@ bool Board::check_end_location(pair<char, char> start, pair<char, char> end) con
                 return true;
         }
         // Piece tries capturing piece of same color
-        if(abs(_occ.find(start)->second->to_ascii() - _occ.find(end)->second->to_ascii()) < 26) {
+        if(_occ.find(start)->second->is_white() == _occ.find(end)->second->is_white()) {
                 return false;
         }
         // Piece tries capturing piece of different color
@@ -246,10 +246,11 @@ void Board::execute_move(pair<char, char> start, pair<char, char> end) {
 			_occ[end] = _occ[start];
 			_occ.erase(start);
 		}
-		return;
 	}
-	_occ[end] = _occ[start];
-	_occ.erase(start);
+	else {
+		_occ[end] = _occ[start];
+		_occ.erase(start);
+	}
 }
 
 void Board::reverse_execute(pair<char, char> start, pair<char, char> end, Piece* first_piece, Piece* end_piece) {
