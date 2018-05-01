@@ -42,6 +42,9 @@ public:
 
 	// Returns true if the designated player is in check
 	bool in_check( bool white ) const;
+	
+	// Returns true if the designated player is in check from the given board
+	bool in_check( bool white, Board& b ) const;
 
 	// Returns true if the designated player is in mate
 	bool in_mate( bool white ) const;

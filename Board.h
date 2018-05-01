@@ -28,6 +28,7 @@ public:
 
 	// Returns a non_const pointer to the piece at a prescribed location
 	Piece* get_piece_pointer ( std::pair< char, char > position ) const;
+	
 	// Returns a reference to the occurences of the pieces
 	const std::map<std::pair<char, char>, Piece*>& occ( void ) const { return _occ; }	
 
@@ -56,6 +57,9 @@ public:
 	bool has_valid_kings( void ) const;
 
 	void clear_board() { _occ.clear(); }
+	
+	// Overwrites the board operator to deep copy a board
+	Board& operator=(const Board& b);
 
 private:
 	// The sparse map storing the pieces, keyed off locations

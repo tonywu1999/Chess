@@ -310,3 +310,14 @@ std::ostream& operator << ( std::ostream& os , const Board& board )
 	}
 	return os;
 }
+
+Board& operator=(const Board& b) {
+	delete[] _occ;
+	_occ = new map<pair<char, char>, Piece*>;
+	for(map<pair<char, char>, Piece*>::const_iterator it = b.occ().cbegin(); it != b.occ().cend(); ++it) {
+		Piece *p = create_piece(it->second->to_ascii());
+		_occ[it->first] = p;
+	}
+	return *this;
+}
+
