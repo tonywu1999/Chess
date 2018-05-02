@@ -132,8 +132,8 @@ bool Chess::in_p_check( bool white, const Board& b ) const
 			if(white != (it->second)->is_white()) {
 				// If possible move by the piece, check if the path is clear
 				if(it->second->legal_move_shape(start, end)) {
-					if(_board.path_is_clear(start, end)) {
-						if(_board.check_end_location(start, end)) {
+					if(b.path_is_clear(start, end)) {
+						if(b.check_end_location(start, end)) {
 							return true;
 						}
 					}	
@@ -212,12 +212,14 @@ bool Chess::in_mate( bool white ) const
 					if(it->second->legal_move_shape(start, end)) {
 						if(b.path_is_clear(start,end)) {
 							if(b.check_end_location(start, end)) {
-								b.execute_move(start, end);
 								// CHECK TO MAKE SURE THAT THE NEW BOARD STILL RETAINS CHECK
-									 if(!in_p_check(white, b)) {
-									 	return false;
-									}
-								b.reverse_execute(start, end, it->second, b.occ().find(end)->second);
+								Piece* start_point = it->second;
+								Piece* end_point = b.get_piece_pointer(end);
+								b.execute_move(start, end);
+								if(!in_p_check(white, b)) {
+									return false;
+								}
+								b.reverse_execute(start, end, start_point, end_point);
 								// DEFINE FIRST AND LAST
 							}
 						}
@@ -371,7 +373,9 @@ bool Chess::in_stalemate( bool white ) const
 
 bool Chess::in_stalemate( bool white ) const
 {
-        char king;
+        Board b = _board;
+	
+	char king;
         if( white ) {
                 king = 'K';
         } else {
@@ -380,25 +384,28 @@ bool Chess::in_stalemate( bool white ) const
 
         pair<char, char> start;
         pair<char, char> end;
-
+	
         // Runs through the map
         for(char i = 'A'; i <= 'H'; i++) {
                 for(char j = '1'; j <= '8'; j++) {
                         end = make_pair(i, j);
-                        for(map<pair<char, char>, Piece*>::const_iterator it = _board.occ().cbegin();
-                                        it!= _board.occ().cend(); ++it) {
-                                if(it->second->to_ascii() != king) {
-                                        start = it->first;
-                                        if(white == (it->second)->is_white()) {
-                                                if(it->second->legal_move_shape(start, end)) {
-                                                        return false;
-                                                }
-                                                else if(_board.path_is_clear(start, end)) {
-                                                        return false;
-                                                }
-                                                else if(_board.check_end_location(start, end)) {
-                                                        return false;
-                                                }
+                        for(map<pair<char, char>, Piece*>::const_iterator it = b.occ().cbegin();
+                                        it!= b.occ().cend(); ++it) {
+				if(white == (it->second)->is_white()) {
+                                       	start = it->first;
+					if(it->second->legal_move_shape(start, end)) {
+						if(b.path_is_clear(start, end)) {
+							if(b.check_end_location(start, end)) {                                                        		
+								Piece* start_point = it->second;
+								Piece* end_point = b.get_piece_pointer(end);
+								b.execute_move(start, end);	
+								// CHECK TO MAKE SURE THAT THE NEW BOARD STILL RETAINS CHECK
+								if(!in_p_check(white, b)) {
+								 	return false;
+								}
+								b.reverse_execute(start, end, start_point, end_point);
+							}
+						}
                                         }
                                 }
                         }

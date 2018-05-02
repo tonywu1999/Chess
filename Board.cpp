@@ -24,7 +24,7 @@ using std::string;
 Board::Board( void ){}
 
 Board::Board( const Board& b ) {
-	_occ = map<pair<char,char>, Piece*>();
+	_occ.clear();
 	for(map<pair<char, char>, Piece*>::const_iterator it = b.occ().cbegin(); it != b.occ().cend(); ++it) {
    		Piece *p = create_piece(it->second->to_ascii());
    		_occ[it->first] = p;
@@ -304,7 +304,7 @@ void Board::display( void ) const
 }
 
 Board& Board::operator=(const Board& b) {
-	_occ = map<pair<char, char>, Piece*>();
+	_occ.clear();
 	for(map<pair<char, char>, Piece*>::const_iterator it = b.occ().cbegin(); it != b.occ().cend(); ++it) {
 		Piece *p = create_piece(it->second->to_ascii());
 		_occ[it->first] = p;
