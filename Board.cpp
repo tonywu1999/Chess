@@ -23,6 +23,14 @@ using std::string;
 // DO NOT MODIFY THIS FUNCTION!!!! //
 Board::Board( void ){}
 
+Board::Board( const Board& b ) {
+	_occ = map<pair<char,char>, Piece*>();
+	for(map<pair<char, char>, Piece*>::const_iterator it = b.occ().cbegin(); it != b.occ().cend(); ++it) {
+   		Piece *p = create_piece(it->second->to_ascii());
+   		_occ[it->first] = p;
+	}
+}
+
 const Piece* Board::operator()( pair< char , char > position ) const
 {		
 	if(_occ.find(position) != _occ.end()) {
@@ -295,6 +303,15 @@ void Board::display( void ) const
 	
 }
 
+Board& Board::operator=(const Board& b) {
+	_occ = map<pair<char, char>, Piece*>();
+	for(map<pair<char, char>, Piece*>::const_iterator it = b.occ().cbegin(); it != b.occ().cend(); ++it) {
+		Piece *p = create_piece(it->second->to_ascii());
+		_occ[it->first] = p;
+	}
+	return *this;
+}
+
 // DO NOT MODIFY THIS FUNCTION!!!! //
 std::ostream& operator << ( std::ostream& os , const Board& board )
 {
@@ -311,13 +328,4 @@ std::ostream& operator << ( std::ostream& os , const Board& board )
 	return os;
 }
 
-Board& operator=(const Board& b) {
-	delete[] _occ;
-	_occ = new map<pair<char, char>, Piece*>;
-	for(map<pair<char, char>, Piece*>::const_iterator it = b.occ().cbegin(); it != b.occ().cend(); ++it) {
-		Piece *p = create_piece(it->second->to_ascii());
-		_occ[it->first] = p;
-	}
-	return *this;
-}
 
