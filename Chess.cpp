@@ -399,13 +399,12 @@ bool Chess::in_stalemate( bool white ) const
                                                 else if(_board.check_end_location(start, end)) {
                                                         return false;
                                                 }
-                                                return true;
                                         }
-                                return true;
                                 }
                         }
                 }
         }
+	return true;
 
 }
 
