@@ -216,7 +216,7 @@ bool Chess::in_mate( bool white ) const
 									 if(!in_p_check(white, b)) {
 									 	return false;
 									}
-								reverse_execute(start, end, first, last);
+								b.reverse_execute(start, end, it->second, b.occ().find(end)->second);
 								// DEFINE FIRST AND LAST
 							}
 						}
