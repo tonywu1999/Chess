@@ -6,6 +6,7 @@ using std::map;
 using std::pair;
 using std::endl;
 using std::cout;
+using std::make_pair;
 
 /////////////////////////////////////
 // DO NOT MODIFY THIS FUNCTION!!!! //
@@ -326,6 +327,7 @@ bool Chess::in_mate( bool white ) const
 //	return false;
 //}
 
+/*
 bool Chess::in_stalemate( bool white ) const
 {
 	Board b = _board;
@@ -364,6 +366,47 @@ bool Chess::in_stalemate( bool white ) const
 		}
 	}
 	return true;
+}
+*/
+
+bool Chess::in_stalemate( bool white ) const
+{
+        char king;
+        if( white ) {
+                king = 'K';
+        } else {
+                king = 'k';
+        }
+
+        pair<char, char> start;
+        pair<char, char> end;
+
+        // Runs through the map
+        for(char i = 'A'; i <= 'H'; i++) {
+                for(char j = '1'; j <= '8'; j++) {
+                        end = make_pair(i, j);
+                        for(map<pair<char, char>, Piece*>::const_iterator it = _board.occ().cbegin();
+                                        it!= _board.occ().cend(); ++it) {
+                                if(it->second->to_ascii() != king) {
+                                        start = it->first;
+                                        if(white == (it->second)->is_white()) {
+                                                if(it->second->legal_move_shape(start, end)) {
+                                                        return false;
+                                                }
+                                                else if(_board.path_is_clear(start, end)) {
+                                                        return false;
+                                                }
+                                                else if(_board.check_end_location(start, end)) {
+                                                        return false;
+                                                }
+                                                return true;
+                                        }
+                                return true;
+                                }
+                        }
+                }
+        }
+
 }
 
 /////////////////////////////////////
