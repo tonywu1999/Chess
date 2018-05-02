@@ -1,10 +1,12 @@
 #include <iostream>
 #include "Pawn.h"
 #include "Piece.h"
+#include <cmath>
 
 using std::cout;
 using std::endl;
 using std::pair;
+using std::abs;
 
 bool Pawn::legal_move_shape( pair< char , char > start , pair< char , char > end ) const {
         if(start.first < 'A' || start.first > 'H' ||
@@ -29,18 +31,26 @@ bool Pawn::legal_move_shape( pair< char , char > start , pair< char , char > end
 				// Pawn does not move forward two spaces from start position
 				return false;
 			}
-			else {
-				return true;
+			if((end.second - start.second) == 2 && end.first != start.first) {
+				// Pawn cannot move forward two spaces + horizontal too
+				return false;
 			}
+			if(abs(end.first-start.first) != 1 && abs(end.first-start.first) != 0) {
+				// Horizontal movement not 1 or 0
+				return false;
+			}
+			return true;
 		}
 		else {
 			if((end.second - start.second) != 1) {
 				// Pawn does not move forward one space
 				return false;
 			}
-			else {
-				return true;
+			if(abs(end.first-start.first) != 1 && abs(end.first-start.first) != 0) {
+				// Horizontal movement not 1 or 0
+				return false;
 			}
+			return true;
 		}
 	}
 	else {
@@ -51,18 +61,26 @@ bool Pawn::legal_move_shape( pair< char , char > start , pair< char , char > end
                                 // Pawn does not move forward two spaces from start position
                                 return false;
                         }
-                        else {
-                                return true;
-                        }
+			if((start.second - end.second) == 2 && end.first != start.first) {
+				// Pawn cannot move forward two spaces + horizontal too
+				return false;
+			}
+			if(abs(end.first-start.first) != 1 && abs(end.first-start.first) != 0) {
+				// Horizontal movement not 1 or 0
+				return false;
+			}
+                        return true;
                 }
                 else {
                         if((start.second - end.second) != 1) {
                                 // Pawn does not move forward one space
                                 return false;
                         }
-                        else {
-                                return true;
-                        }
+			if(abs(end.first-start.first) != 1 && abs(end.first-start.first) != 0) {
+				// Horizontal movement not 1 or 0
+				return false;
+			}
+                        return true;
                 }
         }
 }
