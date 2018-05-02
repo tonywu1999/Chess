@@ -48,8 +48,10 @@ public:
 	
 	// Adds piece to end location
 	void execute_move(std::pair<char, char> start, std::pair<char, char> end);
+	
 	void reverse_execute(std::pair<char, char> start, 
 		std::pair<char, char> end, Piece* first_piece, Piece* end_piece);	
+	
 	// Displays the board by printing it to stdout
 	void display( void ) const;
 

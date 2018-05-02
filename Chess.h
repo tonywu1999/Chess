@@ -39,12 +39,12 @@ public:
 	}	
 	// Attemps to make a move. If successfull, the move is made and the turn is switched white <-> black
 	bool make_move( std::pair< char , char > start , std::pair< char , char > end );
+	
+	// Returns true if the designated player is in check from the given board
+	bool in_p_check( bool white, const Board& b ) const;
 
 	// Returns true if the designated player is in check
 	bool in_check( bool white ) const;
-	
-	// Returns true if the designated player is in check from the given board
-	bool in_check( bool white, Board& b ) const;
 
 	// Returns true if the designated player is in mate
 	bool in_mate( bool white ) const;

@@ -103,9 +103,50 @@ bool Chess::make_move( std::pair< char , char > start , std::pair< char , char >
 	return true;
 }
 
+bool Chess::in_p_check( bool white, const Board& b ) const
+{
+	char king;
+	if( white ) {
+		king = 'K';
+	} else {
+		king = 'k';
+	}
+
+	pair<char, char> start;
+	pair<char, char> end;
+	// Finds where the king in question is
+	for(map<pair<char, char>, Piece*>::const_iterator it = b.occ().cbegin(); it != b.occ().cend(); ++it) {
+		if(it->second->to_ascii() == king) {
+			end = it->first;
+			break;
+		}	
+	}
+
+	// Runs through the rest of the map
+	for(map<pair<char, char>, Piece*>::const_iterator it = b.occ().cbegin(); it != b.occ().cend(); ++it) {
+		// Ensures not the same king again
+		if(it->second->to_ascii() != king) {
+			start = it->first;
+			// Make sure piece is opposite color to continue for check
+			if(white != (it->second)->is_white()) {
+				// If possible move by the piece, check if the path is clear
+				if(it->second->legal_move_shape(start, end)) {
+					if(_board.path_is_clear(start, end)) {
+						if(_board.check_end_location(start, end)) {
+							return true;
+						}
+					}	
+				} 
+			}
+		}
+	}	
+	return false;
+}
+
+
 bool Chess::in_check( bool white ) const
 {
-	if(in_p_check(white, _board) {
+	if(in_p_check(white, _board)) {
 		return true;
 	}
 	return false;
@@ -149,46 +190,6 @@ bool Chess::in_check( bool white ) const
 */
 }
 
-bool Chess::in_p_check( bool white, Board& b ) const
-{
-	char king;
-	if( white ) {
-		king = 'K';
-	} else {
-		king = 'k';
-	}
-
-	pair<char, char> start;
-	pair<char, char> end;
-	// Finds where the king in question is
-	for(map<pair<char, char>, Piece*>::const_iterator it = b.occ().cbegin(); it != b.occ().cend(); ++it) {
-		if(it->second->to_ascii() == king) {
-			end = it->first;
-			break;
-		}	
-	}
-
-	// Runs through the rest of the map
-	for(map<pair<char, char>, Piece*>::const_iterator it = b.occ().cbegin(); it != b.occ().cend(); ++it) {
-		// Ensures not the same king again
-		if(it->second->to_ascii() != king) {
-			start = it->first;
-			// Make sure piece is opposite color to continue for check
-			if(white != (it->second)->is_white()) {
-				// If possible move by the piece, check if the path is clear
-				if(it->second->legal_move_shape(start, end)) {
-					if(_board.path_is_clear(start, end)) {
-						if(_board.check_end_location(start, end)) {
-							return true;
-						}
-					}	
-				} 
-			}
-		}
-	}	
-	return false;
-}
-
 bool Chess::in_mate( bool white ) const
 {
 	Board b = _board;
@@ -197,22 +198,22 @@ bool Chess::in_mate( bool white ) const
 	if(!in_check(white)) {
 		return false;	
 	}
-	pair<char, char> end = make_pair('A','1');
+	pair<char, char> end = std::make_pair('A','1');
 	pair<char, char> start;
 	
-	// Logic Check: Mate = no possible move for the 
+	// Logic Check: Mate = no possible move for anything 
 	for(map<pair<char, char>, Piece*>::const_iterator it = b.occ().cbegin(); it != b.occ().cend(); ++it) {
 		// Checks to make sure that the new piece is the same color
 		if(white == it->second->is_white()) {
 			start = it->first;
 			for(int i = 0; i < 7; i++) {
 				for(int j = 0; j < 7; j++) {
-					if(b.legal_move_shape(start, end)) {
+					if(it->second->legal_move_shape(start, end)) {
 						if(b.path_is_clear(start,end)) {
-							if(b.check_end_loc(start, end)) {
-								b.make_move(start, end);
+							if(b.check_end_location(start, end)) {
+								b.execute_move(start, end);
 								// CHECK TO MAKE SURE THAT THE NEW BOARD STILL RETAINS CHECK
-									 if(!in_p_check(white, b) {
+									 if(!in_p_check(white, b)) {
 									 	return false;
 									}
 								reverse_execute(start, end, first, last);
@@ -227,10 +228,12 @@ bool Chess::in_mate( bool white ) const
 			}
 		}
 	}
+
 // sidenote: wow holy shit that was a lot easier than I thought it would be.
 // Also, the code is a lot more concise
 	return true;
 }
+
 /*	// Determines which king it is
 	char king;
 	if( white ) {
@@ -319,37 +322,34 @@ bool Chess::in_mate( bool white ) const
 	/////////////////////////
 	// [REPLACE THIS STUB] //
 	/////////////////////////
-	return false;
-}
+//	return false;
+//}
 
 bool Chess::in_stalemate( bool white ) const
 {
-	char king;
-        if( white ) {
-                king = 'K';
-        } else {
-                king = 'k';
-        }
+	Board b = _board;
 
+	pair<char, char> end = std::make_pair('A','1');
 	pair<char, char> start;
-	pair<char, char> end;
-
-	// Runs through the map
-	for(map<pair<char, char>, Piece*>::const_iterator it = _board.occ().cbegin(); 
-			it!= _board.occ().cend(); ++it) {
-		if(it->second->to_ascii() != king) {
+	
+	// Logic Check: Mate = no possible move for anything 
+	for(map<pair<char, char>, Piece*>::const_iterator it = b.occ().cbegin(); it != b.occ().cend(); ++it) {
+		// Checks to make sure that the new piece is the same color
+		if(white == it->second->is_white()) {
 			start = it->first;
-			if(white == (it->second)->is_white()) {
-				if(it->second->legal_move_shape(start, end)) {
-					return false;
-				}			
-				else if(_board.path_is_clear(start, end)) {
-                                	return false;
+			for(int i = 0; i < 7; i++) {
+				for(int j = 0; j < 7; j++) {
+					if(it->second->legal_move_shape(start, end)) {
+						if(b.path_is_clear(start,end)) {
+							if(b.check_end_location(start, end)) {
+								return false;
+							}
+						}
+					}
+					start.second++;
 				}
-				if(_board.check_end_location(start, end)) {
-                        		return false;
-				}
-				return true;		
+				start.first++;
+				start.second = 1;
 			}
 		}
 	}
