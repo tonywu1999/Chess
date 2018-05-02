@@ -206,8 +206,8 @@ bool Chess::in_mate( bool white ) const
 		// Checks to make sure that the new piece is the same color
 		if(white == it->second->is_white()) {
 			start = it->first;
-			for(int i = 0; i < 7; i++) {
-				for(int j = 0; j < 7; j++) {
+			for(int i = 0; i < 8; i++) {
+				for(int j = 0; j < 8; j++) {
 					if(it->second->legal_move_shape(start, end)) {
 						if(b.path_is_clear(start,end)) {
 							if(b.check_end_location(start, end)) {
@@ -221,11 +221,12 @@ bool Chess::in_mate( bool white ) const
 							}
 						}
 					}
-					start.second++;
+					end.second++;
 				}
-				start.first++;
-				start.second = 1;
+				end.first++;
+				end.second = '1';
 			}
+			end.first = 'A';
 		}
 	}
 
@@ -337,20 +338,29 @@ bool Chess::in_stalemate( bool white ) const
 		// Checks to make sure that the new piece is the same color
 		if(white == it->second->is_white()) {
 			start = it->first;
-			for(int i = 0; i < 7; i++) {
-				for(int j = 0; j < 7; j++) {
+			for(int i = 0; i < 8; i++) {
+				for(int j = 0; j < 8; j++) {
 					if(it->second->legal_move_shape(start, end)) {
 						if(b.path_is_clear(start,end)) {
 							if(b.check_end_location(start, end)) {
-								return false;
+								 b.execute_move(start, end);
+                                                                // CHECK TO MAKE SURE THAT THE NEW BOARD STILL RETAINS CHECK
+                                                                         if(!in_p_check(white, b)) {
+                                                                                return false;
+                                                                        }
+                                                                b.reverse_execute(start, end, it->second, b.occ().find(end)->second);
+
+								
 							}
 						}
 					}
-					start.second++;
+					end.second++;
 				}
-				start.first++;
-				start.second = 1;
+				end.first++;
+				end.second = '1';
 			}
+			end.first = 'A';
+
 		}
 	}
 	return true;
