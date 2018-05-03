@@ -204,13 +204,6 @@ bool Chess::in_stalemate( bool white ) const
 {
         Board b = _board;
 	
-	char king;
-        if( white ) {
-                king = 'K';
-        } else {
-                king = 'k';
-        }
-
         pair<char, char> start;
         pair<char, char> end;
 	

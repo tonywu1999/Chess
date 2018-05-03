@@ -26,6 +26,11 @@ public:
 	// Copy Constructor
 	Board( const Board& b); 
 
+	~Board() {
+		/* Loop through _occ
+		 For each iterator, delete Piece corresponding to it
+		 */
+	}	
 	// Returns a const pointer to the piece at a prescribed location if it exists, or a NULL pointer if there is nothing there.
 	const Piece* operator() ( std::pair< char , char > position ) const;
 
