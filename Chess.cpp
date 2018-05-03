@@ -250,6 +250,9 @@ std::istream& operator >> ( std::istream& is , Chess& chess )
 {
 
 	// Erase the _occ board map:
+	for(map<pair<char, char>, Piece*>::const_iterator it = chess.board2().occ().cbegin(); it != chess.board2().occ().cend(); ++it) {
+                delete (it->second);
+        }
 	chess.board2().clear_board();
 	
 	char piece;
