@@ -74,7 +74,7 @@ bool Board::add_piece( pair< char , char > position , char piece_designator )
 		return false;
 	}
 	vector<char> pieces = {'k', 'K', 'q', 'Q', 'b', 'B', 'N', 'n', 'R',
-		'r', 'p', 'P'};
+		'r', 'p', 'P', 'M', 'm'};
 	vector<char>::iterator it;
 	it = find(pieces.begin(), pieces.end(), piece_designator);
 	if(it != pieces.end()) {
