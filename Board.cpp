@@ -23,6 +23,7 @@ using std::string;
 // DO NOT MODIFY THIS FUNCTION!!!! //
 Board::Board( void ){}
 
+// Deep copy of the board when initializing
 Board::Board( const Board& b ) {
 	_occ.clear();
 	for(map<pair<char, char>, Piece*>::const_iterator it = b.occ().cbegin(); it != b.occ().cend(); ++it) {
@@ -31,12 +32,14 @@ Board::Board( const Board& b ) {
 	}
 }
 
+// Board Destructor
 Board::~Board() {
 	for(map<pair<char, char>, Piece*>::const_iterator it = _occ.cbegin(); it != _occ.cend(); ++it) {
 		delete (it->second);
 	}
 }
 
+// Returns const pointer of a Piece based on location on a board
 const Piece* Board::operator()( pair< char , char > position ) const
 {		
 	if(_occ.find(position) != _occ.end()) {
@@ -47,6 +50,7 @@ const Piece* Board::operator()( pair< char , char > position ) const
 	return NULL;
 }
 
+// Returns non-const pointer of a Piece based on location on a board
 Piece* Board::get_piece_pointer ( pair< char, char > position ) const {
 	if(_occ.find(position) != _occ.end()) {
                 // This position is occupied by a piece
@@ -57,7 +61,7 @@ Piece* Board::get_piece_pointer ( pair< char, char > position ) const {
 }
 
 
-
+// Add a piece to a specified location onto the board
 bool Board::add_piece( pair< char , char > position , char piece_designator )
 {
 	
@@ -73,6 +77,8 @@ bool Board::add_piece( pair< char , char > position , char piece_designator )
 		// Wrong Number
 		return false;
 	}
+
+	// Ensures piece is one of the following characters
 	vector<char> pieces = {'k', 'K', 'q', 'Q', 'b', 'B', 'N', 'n', 'R',
 		'r', 'p', 'P', 'M', 'm'};
 	vector<char>::iterator it;
@@ -84,6 +90,8 @@ bool Board::add_piece( pair< char , char > position , char piece_designator )
 		// Piece designator not found
 		return false;
 	}
+
+	// Create Piece
 	_occ[ position ] = create_piece( piece_designator );
 	return true;
 }
@@ -244,8 +252,12 @@ bool Board::check_end_location(pair<char, char> start, pair<char, char> end) con
 	return false;
 }
 
+// Moves the piece from the start position to the end position
 void Board::execute_move(pair<char, char> start, pair<char, char> end) {
+
+	// Scenario for Pawn
 	if((_occ[start]->to_ascii() == 'P') || (_occ[start]->to_ascii() == 'p')) {
+		// Pawn Promotion to a Queen
 		if(end.second == '8') {
 		 	_occ.erase(start);
 			_occ.erase(end);
@@ -262,11 +274,19 @@ void Board::execute_move(pair<char, char> start, pair<char, char> end) {
 		}
 	}
 	else {
+		// Assign start pointer as end location value
 		_occ[end] = _occ[start];
+		// Remove original location
 		_occ.erase(start);
 	}
 }
 
+// Reverses a move made
+// Intuition: Take the start and end locations, and assign 
+// the original start Piece* value to _occ[start] and the original
+// end Piece* value to _occ[end]
+// Successful execution of reverse_execute requires the user to 
+// save the Piece* pointers before using execute_move
 void Board::reverse_execute(pair<char, char> start, pair<char, char> end, Piece* first_piece, Piece* end_piece) {
 	_occ[start] = first_piece;
 	if(end_piece == NULL) {
@@ -277,7 +297,12 @@ void Board::reverse_execute(pair<char, char> start, pair<char, char> end, Piece*
 	}
 }
 
+// Clears the map so that a new map can be inserted
 void Board::clear_board() {
+
+	// Theoretical code that should delete the pointers
+	// associated with the previous board
+	
 	/*
 	for(map<pair<char, char>, Piece*>::iterator it = _occ.begin(); it != _occ.end(); ++it) {
                 Piece* deleted = it->second;
@@ -288,6 +313,7 @@ void Board::clear_board() {
 	
         }*/
 
+	// Clears entire _occ map
 	_occ.clear();
 
 }
@@ -324,6 +350,7 @@ void Board::display( void ) const
 	
 }
 
+// Deep copy of the board when assigning
 Board& Board::operator=(const Board& b) {
 	_occ.clear();
 	for(map<pair<char, char>, Piece*>::const_iterator it = b.occ().cbegin(); it != b.occ().cend(); ++it) {
