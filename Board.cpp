@@ -279,17 +279,17 @@ void Board::reverse_execute(pair<char, char> start, pair<char, char> end, Piece*
 
 void Board::clear_board() {
 	/*
-	for(map<pair<char, char>, Piece*>::const_iterator it = _occ.cbegin(); it != _occ.cend(); ++it) {
+	for(map<pair<char, char>, Piece*>::iterator it = _occ.begin(); it != _occ.end(); ++it) {
                 Piece* deleted = it->second;
-		_occ.erase(it->first);
+		_occ.erase(it);
 		if (deleted != NULL) {
 			delete deleted;
 		}
 	
-        }
-	*/
+        }*/
 
 	_occ.clear();
+
 }
 
 // Loops through map to see if there's either 'K' or 'k'

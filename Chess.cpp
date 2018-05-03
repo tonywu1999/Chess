@@ -248,7 +248,6 @@ std::ostream& operator << ( std::ostream& os , const Chess& chess )
 
 std::istream& operator >> ( std::istream& is , Chess& chess )
 {
-
 	chess.board2().clear_board();
 	
 	char piece;
