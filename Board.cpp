@@ -31,6 +31,12 @@ Board::Board( const Board& b ) {
 	}
 }
 
+Board::~Board() {
+	for(map<pair<char, char>, Piece*>::const_iterator it = _occ.cbegin(); it != _occ.cend(); ++it) {
+		delete (it->second);
+	}
+}
+
 const Piece* Board::operator()( pair< char , char > position ) const
 {		
 	if(_occ.find(position) != _occ.end()) {
