@@ -178,6 +178,7 @@ bool Chess::in_mate( bool white ) const
 								Piece* end_point = b.get_piece_pointer(end);
 								b.execute_move(start, end);
 								if(!in_p_check(white, b)) {
+								 	delete end_point;
 									return false;
 								}
 								b.reverse_execute(start, end, start_point, end_point);
@@ -223,7 +224,8 @@ bool Chess::in_stalemate( bool white ) const
 								b.execute_move(start, end);	
 								// CHECK TO MAKE SURE THAT THE NEW BOARD STILL RETAINS CHECK
 								if(!in_p_check(white, b)) {
-								 	return false;
+								 	delete end_point;
+									return false;
 								}
 								b.reverse_execute(start, end, start_point, end_point);
 							}
