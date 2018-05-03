@@ -226,7 +226,7 @@ bool Board::check_end_location(pair<char, char> start, pair<char, char> end) con
 				return true;
 			}
 		}
-		else if(abs(start.second - end.second) == 1) {
+		else if(abs(start.second - end.second) == 1 || abs(start.second - end.second) == 2) {
 			// Pawn tries to move vertically but piece is there
 			if(_occ.find(end) != _occ.end()) {
 				return false;
@@ -303,7 +303,6 @@ void Board::clear_board() {
 	// Theoretical code that should delete the pointers
 	// associated with the previous board
 	
-	/*
 	for(map<pair<char, char>, Piece*>::iterator it = _occ.begin(); it != _occ.end(); ++it) {
                 Piece* deleted = it->second;
 		_occ.erase(it);
@@ -311,10 +310,10 @@ void Board::clear_board() {
 			delete deleted;
 		}
 	
-        }*/
+        }
 
 	// Clears entire _occ map
-	_occ.clear();
+	// _occ.clear();
 
 }
 

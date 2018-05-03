@@ -179,6 +179,7 @@ bool Chess::in_mate( bool white ) const
 								b.execute_move(start, end);
 								if(!in_p_check(white, b)) {
 								 	delete end_point;
+									cout << start.first << start.second << " " << end.first << end.second << endl;
 									return false;
 								}
 								b.reverse_execute(start, end, start_point, end_point);
