@@ -277,6 +277,14 @@ void Board::reverse_execute(pair<char, char> start, pair<char, char> end, Piece*
 	}
 }
 
+void Board::clear_board() {
+	for(map<pair<char, char>, Piece*>::const_iterator it = _occ.cbegin(); it != _occ.cend(); ++it) {
+                Piece* deleted = it->second;
+		_occ.erase(it->first);
+		delete deleted;
+        }
+}
+
 // Loops through map to see if there's either 'K' or 'k'
 // If there's one each, return true, else return false
 bool Board::has_valid_kings( void ) const

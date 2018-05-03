@@ -62,7 +62,7 @@ public:
 	// Returns true if the board has the right number of kings on it
 	bool has_valid_kings( void ) const;
 
-	void clear_board() { _occ.clear(); }
+	void clear_board();
 	
 	// Overwrites the board operator to deep copy a board
 	Board& operator=(const Board& b);
