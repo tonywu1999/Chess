@@ -248,24 +248,31 @@ std::ostream& operator << ( std::ostream& os , const Chess& chess )
 
 std::istream& operator >> ( std::istream& is , Chess& chess )
 {
+	// Clear the map of _board contained in chess
+	// clear_board() is a method in the Board class
 	chess.board2().clear_board();
 	
+	// Loop through file which contains 8 rows and 8 columns of characters
 	char piece;
 	char number = '8';
 	while (number > '0') {
 		char letter = 'A';
 		while(letter <= 'H') {
 			is >> piece;
+			// Add piece if a location is not a '-' symbol
 			if(piece != '-') {
-				// I think board() is const	
+				// Use board2() to access _board
+				// since board() is a const method	
 				chess.board2().add_piece(pair< char , char >( letter , number ) , piece );
 			}
 			letter = letter + 1;
 				
 		}
 		number = number - 1;
-		// is >> piece; // Reads new line character
 	}
+	// After 64 characters are read, this last reading
+	// reads the last character which determines if the board
+	// is at white or black's turn
 	is >> piece;
 	chess.set_turn_white(piece);
 	return is;
