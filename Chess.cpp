@@ -93,7 +93,9 @@ bool Chess::make_move( std::pair< char , char > start , std::pair< char , char >
 		_board.reverse_execute(start, end, first, last);
 		return false;
 	}
-
+	if(last != NULL) {
+		delete last;
+	}
 	// Change color of player:
 	if(_turn_white) {
 		_turn_white = false;
