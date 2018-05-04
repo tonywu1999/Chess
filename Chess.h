@@ -27,6 +27,7 @@ public:
 	/////////////////////////////////////
 	bool turn_white( void ) const { return _turn_white; }
 	
+	// Sets _turn_white for a new board
 	void set_turn_white( char white_black ) {
 		if(white_black == 'b') {
 			_turn_white = false;
@@ -38,7 +39,8 @@ public:
 		// So we just assume it starts white.
 
 	}	
-	// Attemps to make a move. If successfull, the move is made and the turn is switched white <-> black
+	
+	// Attempts to make a move. If successfull, the move is made and the turn is switched white <-> black
 	bool make_move( std::pair< char , char > start , std::pair< char , char > end );
 	
 	// Returns true if the designated player is in check from the given board

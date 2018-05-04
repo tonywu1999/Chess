@@ -162,8 +162,10 @@ bool Chess::in_mate( bool white ) const
 		// Checks to make sure that the new piece is the same color
 		if(white == it->second->is_white()) {
 			start = it->first;
+			// Loop through whole 8x8 board to iterate through possible end locations
 			for(int i = 0; i < 8; i++) {
 				for(int j = 0; j < 8; j++) {
+					// Check if path is legal, clear, and end location is valid
 					if(it->second->legal_move_shape(start, end)) {
 						if(_board.path_is_clear(start,end)) {
 							if(_board.check_end_location(start, end)) {
@@ -171,9 +173,9 @@ bool Chess::in_mate( bool white ) const
 								Board b = _board;
 								b.execute_move(start, end);
 								if(!in_p_check(white, b)) {
+									// If new board not in check, then it is possible to escape check
 									return false;
 								}
-								// DEFINE FIRST AND LAST
 							}
 						}
 					}
@@ -186,6 +188,7 @@ bool Chess::in_mate( bool white ) const
 		}
 	}
 
+	// No possible moves can be made without getting king in check
 	return true;
 }
 
@@ -196,21 +199,25 @@ bool Chess::in_stalemate( bool white ) const
         pair<char, char> start;
         pair<char, char> end;
 	
-        // Runs through the map
+        // Runs through the 8x8 chess board
         for(char i = 'A'; i <= 'H'; i++) {
                 for(char j = '1'; j <= '8'; j++) {
                         end = make_pair(i, j);
+			// Runs through map of chess pieces on the board
                         for(map<pair<char, char>, Piece*>::const_iterator it =_board.occ().cbegin();
                                         it!= _board.occ().cend(); ++it) {
+				// Make sure piece that we check is a piece the current player owns
 				if(white == (it->second)->is_white()) {
                                        	start = it->first;
+					// Ensure hypothetical path is legal, clear, and end location is valid
 					if(it->second->legal_move_shape(start, end)) {
 						if(_board.path_is_clear(start, end)) {
 							if(_board.check_end_location(start, end)) {                                                        		
+								// CHECK TO MAKE SURE THAT THE NEW BOARD STILL RETAINS CHECK
         							Board b = _board;
 								b.execute_move(start, end);	
-								// CHECK TO MAKE SURE THAT THE NEW BOARD STILL RETAINS CHECK
 								if(!in_p_check(white, b)) {
+									// New board not in check, so there is a move to not have board in stalemate
 									return false;
 								}
 							}
@@ -220,6 +227,8 @@ bool Chess::in_stalemate( bool white ) const
                         }
                 }
         }
+
+	// No possible moves can be made without getting king in check
 	return true;
 
 }

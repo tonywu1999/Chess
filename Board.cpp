@@ -289,7 +289,7 @@ void Board::execute_move(pair<char, char> start, pair<char, char> end) {
 // Clears the map so that a new map can be inserted
 void Board::clear_board() {
 
-	// Theoretical code that should delete the pointers
+	// Code that should delete the pointers
 	// associated with the previous board
 	
 	for(map<pair<char, char>, Piece*>::const_iterator it = _occ.cbegin(); it != _occ.cend(); ++it) {
