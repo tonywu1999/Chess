@@ -49,7 +49,6 @@ bool Chess::make_move( std::pair< char , char > start , std::pair< char , char >
 {
 	// Get const pointers to the first and end piece
 	const Piece* first_piece = _board(start);
-	const Piece* end_piece = _board(end);
 
 
 	// Check if first_piece is NULL
