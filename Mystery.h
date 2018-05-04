@@ -11,6 +11,8 @@ class Mystery : public Piece
 public:
 	bool legal_move_shape( std::pair< char , char > start , std::pair< char , char > end ) const
 	{
+		start.first++;
+		end.first++;
 		return false;
 	}
 
