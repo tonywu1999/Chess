@@ -3,8 +3,6 @@
 #include "Piece.h"
 #include <cmath>
 
-using std::cout;
-using std::endl;
 using std::pair;
 using std::abs;
 
