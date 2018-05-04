@@ -1,3 +1,360 @@
+commit 0e738d035ca29003ffeb50bbbfc9282e1ab1665f
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Fri May 4 16:33:35 2018 -0400
+
+    Removed cout and mystery.h edited
+
+commit cbc8d1918bc6584fdd2bda84c6898167a3ddc0a6
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Fri May 4 16:30:18 2018 -0400
+
+    removed some warnings
+
+commit 812be0df53d09208ceeea8fc8b6969b3050a1d30
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Fri May 4 16:08:04 2018 -0400
+
+    VALGRIND NO ERRORS
+
+commit 42603979f07f9649ff704ca41967effce4a94805
+Author: Andrew <azheng4@jhu.edu>
+Date:   Fri May 4 15:59:15 2018 -0400
+
+    a
+
+commit 128227779b719ad8ef66ef3e551292a7adbd33a4
+Author: Andrew <azheng4@jhu.edu>
+Date:   Fri May 4 15:57:24 2018 -0400
+
+    checkmate knight
+
+commit cfbf0d7baf708538bc5ac5ab93b3abf99cd522cd
+Merge: 780d2e7 86b1b07
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Fri May 4 15:49:18 2018 -0400
+
+    Merge branch 'master' of https://bitbucket.org/awu42/final_project
+
+commit 780d2e7a6e7da8914831e9a9bfba17d47c8023c4
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Fri May 4 15:48:59 2018 -0400
+
+    Now supressed to 50 errors
+
+commit 86b1b077673ae4ba6275db2d0ed1163d15f60d91
+Merge: d3d17ea 23426b1
+Author: Andrew <azheng4@jhu.edu>
+Date:   Fri May 4 13:17:04 2018 -0400
+
+    Merge branch 'master' of https://bitbucket.org/awu42/final_project
+
+commit d3d17ea89ec1e16c703003f046444e0e08164ce8
+Author: Andrew <azheng4@jhu.edu>
+Date:   Fri May 4 13:15:03 2018 -0400
+
+    ex check
+
+commit 23426b1f6d399fc5c0465d5edb941b5d88fe436d
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Fri May 4 12:37:30 2018 -0400
+
+    made >> a friend function
+
+commit c42960a3f0c811fa4120544b95cf4104beab2c86
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Fri May 4 12:35:59 2018 -0400
+
+    Modified Board.cpp
+
+commit f8b5e52466301679a11581de859d03931bbca9dc
+Author: Andrew <azheng4@jhu.edu>
+Date:   Fri May 4 12:34:46 2018 -0400
+
+    Board.cpp
+
+commit 8487e4e80f755675781af9dced2cf984e69a8bff
+Author: Andrew <azheng4@jhu.edu>
+Date:   Fri May 4 12:27:32 2018 -0400
+
+    sum fixes
+
+commit f28afaeeb7fba84cb7102d1a3230d0c2eb5d43d5
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Thu May 3 18:33:38 2018 -0400
+
+    valgrind still not working
+
+commit a4f269f88c68afc9178f0a99cb390a82d77b58f7
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Thu May 3 18:24:48 2018 -0400
+
+    Pawn was able to capture a piece after moving forward two spaces. Now it can't
+
+commit a4c38a7744f3570f9f7d9a78f2693d40968b934c
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Thu May 3 17:34:39 2018 -0400
+
+    DMA
+
+commit 1c3097d1f76c2fa3e0996023515f09c15efb271c
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Thu May 3 11:24:10 2018 -0400
+
+    Added comments to Board.cpp
+
+commit 1553e183df01f145cea837ce72dd7e2ef2332042
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Thu May 3 11:08:18 2018 -0400
+
+    comments for last method
+
+commit 443a5865b2449bed545ad842de24c4bd3248b11c
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Wed May 2 22:44:58 2018 -0400
+
+    Rockets lost to Jazz
+
+commit 4eea32161de56f6605eea72f7f3c331ce9ec016d
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Wed May 2 22:05:50 2018 -0400
+
+    Work in progress
+
+commit d9e2c340935ceb81ac98fd0820647f027d3a57c2
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Wed May 2 21:21:00 2018 -0400
+
+    valgrind loading wack
+
+commit 242c248debc3df6ff00ea3064061e2b08567d5d0
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Wed May 2 20:57:09 2018 -0400
+
+    Load valgrind part 2
+
+commit 716d7090b93fadafb058de193c2e34819b84d594
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Wed May 2 20:51:25 2018 -0400
+
+    Load valgrind done
+
+commit 013f68aa4a99aae11b03a7fc42c4c20174feb798
+Author: Andrew <azheng4@jhu.edu>
+Date:   Wed May 2 20:46:26 2018 -0400
+
+    valgrind
+
+commit 650397c579616b6476b7b26649ce7d9c8c7c13d0
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Wed May 2 20:36:19 2018 -0400
+
+    Valgrind
+
+commit 8104bf319447d581e6b4d724c48df2774e3d74b1
+Author: Andrew <azheng4@jhu.edu>
+Date:   Wed May 2 20:30:30 2018 -0400
+
+    destroy make move piece
+
+commit 917b50095cba2a510d8cfdf8152f052bda269713
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Wed May 2 19:44:44 2018 -0400
+
+    Fixed pawn movement
+
+commit 54b44111fda3b9abb6b74256491b562591e9f0bb
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Wed May 2 18:06:27 2018 -0400
+
+    Got checkmate working, stalemate iffy
+
+commit 080a401c5c86c6e6a94dc6337bc4e8eacb1cf323
+Author: Andrew <azheng4@jhu.edu>
+Date:   Wed May 2 13:22:37 2018 -0400
+
+    stalemate example
+
+commit 1adb96dc7b84bc9e18cd7bd0d51fff4d0abef584
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Wed May 2 13:22:01 2018 -0400
+
+    stalemate works
+
+commit b991658d869ab29624ae431fa106ed5c1afa6d8a
+Author: Andrew <azheng4@jhu.edu>
+Date:   Wed May 2 13:20:14 2018 -0400
+
+    stalemate works
+
+commit a659649944bd393fe7d140d8d79faa42ce12b12d
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Wed May 2 13:18:45 2018 -0400
+
+    Almost done
+
+commit b23157c99b1ccc1bdcc51765bc563efb5ebd6986
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Wed May 2 12:53:54 2018 -0400
+
+    Operator = and copy constructor done
+
+commit 6f981ef092a049d62d822c50f33391d5a10d933a
+Author: Alex Lim <alim16@jhu.edu>
+Date:   Wed May 2 12:40:26 2018 -0400
+
+    It's compiling, should work now
+
+commit eb2a06f0909e3a7922472748f80ef075a30b92d6
+Author: Alex Lim <alim16@jhu.edu>
+Date:   Wed May 2 12:28:12 2018 -0400
+
+    Stalemate and Checkmate should now work, there's just one error compiling that we can fix super quickly
+
+commit dc80f1c223ea57fe2ccdf0d2b9b00926cd4e71fb
+Author: Alex Lim <alim16@jhu.edu>
+Date:   Tue May 1 01:08:15 2018 -0400
+
+    Finessed the shit outta this, but still the operator= is static apparently
+
+commit 39a3850e26196d2f73e6bb795fe17495b7bb854f
+Author: Andrew <azheng4@jhu.edu>
+Date:   Mon Apr 30 21:23:17 2018 -0400
+
+    stalemate
+
+commit 7cf4dee60b7c902cf52a1c5de92f7f7d15d13b60
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Mon Apr 30 20:37:28 2018 -0400
+
+    Edited Chess.cpp. Start Mates
+
+commit 7c17dde8c331ada6915578e214d0e93c7ba3df85
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Mon Apr 30 20:34:00 2018 -0400
+
+    Fixed floating exception
+
+commit c02138d377e8a6bead1458ac646b714dd7106c8a
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Mon Apr 30 18:24:03 2018 -0400
+
+    edited chess.cpp
+
+commit 10a1c0c4bae531b7deb7343afa22b452b7af1e6b
+Author: Alex Lim <alim16@jhu.edu>
+Date:   Mon Apr 30 18:03:56 2018 -0400
+
+    reduced redundancy
+
+commit c8350dbe7fd6ab34f99034961c906c04a321c214
+Author: Alex Lim <alim16@jhu.edu>
+Date:   Mon Apr 30 18:01:58 2018 -0400
+
+    Floating exception smh, but check sorta works
+
+commit bc27c0e2f3ad0dcfff78e79d0be8b2713027ad01
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Mon Apr 30 17:53:24 2018 -0400
+
+    Board.cpp get_end_location is now const
+
+commit 65550a92e7f00165f1d9ce81e61a431304ca5413
+Author: Alex Lim <alim16@jhu.edu>
+Date:   Mon Apr 30 17:28:59 2018 -0400
+
+    Fixing the check function
+
+commit 8324ba9da45e92d4e01fe168049ef940ec2d7688
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Sun Apr 29 01:38:27 2018 -0400
+
+    Now we cannot make a move that gets our king in check
+
+commit b5cc26951a0b0908d9314442fa9ee24e9404abaa
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Sun Apr 29 01:30:17 2018 -0400
+
+    Make sure king isn't in check
+
+commit 22b72bdcc017d0e42e693255e9f0837ea7c2140e
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Sat Apr 28 23:59:48 2018 -0400
+
+    Alex finally fixed the in_check function smh
+
+commit 2ef01369d690bf9486d94c3f42cf91dcd56d6037
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Sat Apr 28 23:38:07 2018 -0400
+
+    Fixed float thingy
+
+commit a21e7377201f4df56fcab131e685ffc63546bafa
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Sat Apr 28 22:43:51 2018 -0400
+
+    Separated end check to two functions
+
+commit 4add63cc8a7dbb15b6826888dfa36e7df2321a90
+Author: Andrew <azheng4@jhu.edu>
+Date:   Sat Apr 28 22:08:40 2018 -0400
+
+    Pawn promotion
+
+commit 5694cccde44465c038436b53d33b73672783be69
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Sat Apr 28 21:26:38 2018 -0400
+
+    Load Done
+
+commit f5b6019d5310094e16acece66b3730f9c9fbaba4
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Sat Apr 28 21:07:25 2018 -0400
+
+    Fixed path_is_clear
+
+commit 58527ca19aee37d62110600baabd0cf178f786ab
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Sat Apr 28 20:45:57 2018 -0400
+
+    Can't move other team's piece
+
+commit 9b9c5fdadffb0edc0595333d5313a04d0459fa81
+Author: Andrew <azheng4@jhu.edu>
+Date:   Sat Apr 28 20:40:07 2018 -0400
+
+    Fixed pawn movement for board
+
+commit 969ec61360d8d2704153bb902fa8c77b5c8c481a
+Author: Andrew <azheng4@jhu.edu>
+Date:   Sat Apr 28 20:32:16 2018 -0400
+
+    Fixed knight
+
+commit bb4f54ff7a4afbfdf9f276529f6f4baa7ba04ec3
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Sat Apr 28 20:24:00 2018 -0400
+
+    Stuff commented out
+
+commit 8787ba9c0f89e658e66cae058b5b8ad0256668dd
+Merge: 97b4273 0a0022f
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Sat Apr 28 19:21:20 2018 -0400
+
+    Merge branch 'master' of https://bitbucket.org/awu42/final_project
+
+commit 97b42739d4fba331f68a95860b2ed9bc340b3ea0
+Author: Anthony Wu <awu42@jhu.edu>
+Date:   Sat Apr 28 19:21:00 2018 -0400
+
+    We can play chess
+
+commit 0a0022f38819453f68105df535171cae8671cff1
+Author: Andrew <azheng4@jhu.edu>
+Date:   Sat Apr 28 19:07:11 2018 -0400
+
+    Pawn in Board
+
 commit 3ccb7f531daf392565846cf52f22208d5a259f9b
 Author: Anthony Wu <awu42@jhu.edu>
 Date:   Sat Apr 28 18:43:14 2018 -0400

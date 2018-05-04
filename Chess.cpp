@@ -4,8 +4,6 @@
 
 using std::map;
 using std::pair;
-using std::endl;
-using std::cout;
 using std::make_pair;
 
 /////////////////////////////////////
@@ -53,40 +51,40 @@ bool Chess::make_move( std::pair< char , char > start , std::pair< char , char >
 
 	// Check if first_piece is NULL
 	if(first_piece == NULL) {
-		cout << "Starting piece is NULL" << endl;
+		// Starting piece is NULL
 		return false;
 	}
 
 	if(first_piece->is_white() != _turn_white) {
-		cout << "Wrong Color" << endl;
+		// Wrong Color
 		return false;
 	}
 
 	// Check if first_piece makes a legal move assuming no pieces around
 	if(!(first_piece->legal_move_shape(start, end))) {
-		cout << "Not a legal move shape" << endl;
+		// Not a legal move shape
 		return false;
 	}
 	
 	// Check if path is clear
 	if(!(_board.path_is_clear(start,end))) {
-		cout << "Path is NOT clear" << endl;
+		// Path is NOT clear
 		return false;
 	}
 
 	// Check endpoint 
 	if(!(_board.check_end_location(start, end))) {
-		cout << "Cannot place piece at end location" << endl;
+		// Cannot place piece at end location
 		return false;
 	}
 	
-	// Execute Move
+	// Execute Move on Board Copy
 	Board b = _board;
 	b.execute_move(start, end);
 
 	// Check if board is in check now
 	if(in_p_check(_turn_white, b)) {
-		cout << "Move would result in your king in check" << endl;
+		// Move would result in your king in check
 		return false;
 	}
 	

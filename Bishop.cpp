@@ -3,8 +3,6 @@
 #include "Piece.h"
 
 using std::pair;
-using std::cout;
-using std::endl;
 
 bool Bishop::legal_move_shape( pair< char , char > start , pair< char , char > end ) const {
 	if(start.first < 'A' || start.first > 'H' ||
