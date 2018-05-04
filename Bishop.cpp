@@ -3,13 +3,9 @@
 #include "Piece.h"
 
 using std::pair;
-<<<<<<< HEAD
 using std::cout;
 using std::endl;
 // Checks to make sure that the move entered fits the piece
-=======
->>>>>>> 50c9afc7bb4b9a85889a8d1764a26d1719f97a44
-
 bool Bishop::legal_move_shape( pair< char , char > start , pair< char , char > end ) const {
 	if(start.first < 'A' || start.first > 'H' ||
 			end.first < 'A' || end.first > 'H') {
