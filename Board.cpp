@@ -221,6 +221,9 @@ bool Board::check_end_location(pair<char, char> start, pair<char, char> end) con
 			if(_occ.find(end) == _occ.end()) {
 				return false;
 			}
+			else if(_occ.find(start)->second->is_white() == _occ.find(end)->second->is_white()) {
+				return false;
+			}
 			// Pawn tries to move diagnoally and there is a piece there
 			else {
 				return true;
