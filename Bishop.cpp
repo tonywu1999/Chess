@@ -5,11 +5,12 @@
 using std::pair;
 using std::cout;
 using std::endl;
+// Checks to make sure that the move entered fits the piece
 
 bool Bishop::legal_move_shape( pair< char , char > start , pair< char , char > end ) const {
 	if(start.first < 'A' || start.first > 'H' ||
 			end.first < 'A' || end.first > 'H') {
-		// Not a legal move. Too far horizotal off board
+		// Not a legal move. Too far horizontal off board
 		return false;
 	}
 	if(start.second < '1' || start.second > '8' ||

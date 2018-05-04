@@ -8,6 +8,7 @@ using std::endl;
 using std::pair;
 using std::abs;
 
+// Checks to make sure that the move entered fits the piece
 bool Pawn::legal_move_shape( pair< char , char > start , pair< char , char > end ) const {
         if(start.first < 'A' || start.first > 'H' ||
                         end.first < 'A' || end.first > 'H') {
