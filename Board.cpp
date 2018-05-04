@@ -263,11 +263,13 @@ void Board::execute_move(pair<char, char> start, pair<char, char> end) {
 	if((_occ[start]->to_ascii() == 'P') || (_occ[start]->to_ascii() == 'p')) {
 		// Pawn Promotion to a Queen
 		if(end.second == '8') {
-		 	_occ.erase(start);
+		 	delete _occ[start];
+			_occ.erase(start);
 			_occ.erase(end);
 			add_piece(end, 'Q');
 		}
 		else if(end.second == '1') {
+			delete _occ[start];
 			_occ.erase(start);
 			_occ.erase(end);
 			add_piece(end, 'q');
