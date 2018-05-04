@@ -307,16 +307,11 @@ void Board::clear_board() {
 	// associated with the previous board
 	
 	for(map<pair<char, char>, Piece*>::iterator it = _occ.begin(); it != _occ.end(); ++it) {
-                Piece* deleted = it->second;
+                delete it->second;
 		_occ.erase(it);
-		if (deleted != NULL) {
-			delete deleted;
-		}
 	
         }
 
-	// Clears entire _occ map
-	// _occ.clear();
 
 }
 
