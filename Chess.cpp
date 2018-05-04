@@ -224,7 +224,8 @@ bool Chess::in_stalemate( bool white ) const
 								b.execute_move(start, end);	
 								// CHECK TO MAKE SURE THAT THE NEW BOARD STILL RETAINS CHECK
 								if(!in_p_check(white, b)) {
-								 	delete end_point;
+								 	cout << start.first << start.second << " " << end.first << end.second << endl;
+									delete end_point;
 									return false;
 								}
 								b.reverse_execute(start, end, start_point, end_point);
