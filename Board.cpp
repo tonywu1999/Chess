@@ -293,10 +293,9 @@ void Board::clear_board() {
 	// associated with the previous board
 	
 	for(map<pair<char, char>, Piece*>::const_iterator it = _occ.cbegin(); it != _occ.cend(); ++it) {
-                delete it->second;
-		_occ.erase(it);
-	
+		delete it->second;
         }
+	_occ.clear();
 
 
 }

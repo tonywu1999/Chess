@@ -253,23 +253,6 @@ std::istream& operator >> ( std::istream& is , Chess& chess )
 			}
 		}
 	}
-	// Loop through file which contains 8 rows and 8 columns of characters
-	/*
-	char piece;
-	char number = '8';
-	while (number > '0') {
-		char letter = 'A';
-		while(letter <= 'H') {
-			is >> piece;
-			// Add piece if a location is not a '-' symbol
-			if(piece != '-') {
-			}
-			letter = letter + 1;
-				
-		}
-		number = number - 1;
-	}
-	*/
 	// After 64 characters are read, this last reading
 	// reads the last character which determines if the board
 	// is at white or black's turn
