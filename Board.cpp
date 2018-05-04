@@ -103,6 +103,11 @@ bool Board::path_is_clear(std::pair<char, char> start, std::pair<char, char> end
 
 	pair<char, char> cur_pt = start;
 	
+	// Checks for non-line shape
+	if(h_move != 0 && v_move != 0 && h_move != v_move) {
+		return true;
+	}
+	
 	string dir;
 	// Checks vertical movement
 	if(h_move == 0) {
@@ -197,10 +202,6 @@ bool Board::path_is_clear(std::pair<char, char> start, std::pair<char, char> end
 				return false;
 			}
 		}
-		return true;
-	}
-	// Checks for non-line shape
-	if(h_move != 0 && v_move != 0 && h_move != v_move) {
 		return true;
 	}
 	return false;
