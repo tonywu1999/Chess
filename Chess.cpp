@@ -253,7 +253,7 @@ std::istream& operator >> ( std::istream& is , Chess& chess )
 {
 	// Clear the map of _board contained in chess
 	// clear_board() is a method in the Board class
-	chess.board2().clear_board();
+	chess._board.clear_board();
 	
 	// Loop through file which contains 8 rows and 8 columns of characters
 	char piece;
@@ -264,9 +264,7 @@ std::istream& operator >> ( std::istream& is , Chess& chess )
 			is >> piece;
 			// Add piece if a location is not a '-' symbol
 			if(piece != '-') {
-				// Use board2() to access _board
-				// since board() is a const method	
-				chess.board2().add_piece(pair< char , char >( letter , number ) , piece );
+				chess._board.add_piece(pair< char , char >( letter , number ) , piece );
 			}
 			letter = letter + 1;
 				
