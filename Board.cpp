@@ -83,11 +83,7 @@ bool Board::add_piece( pair< char , char > position , char piece_designator )
 		'r', 'p', 'P', 'M', 'm'};
 	vector<char>::iterator it;
 	it = find(pieces.begin(), pieces.end(), piece_designator);
-	if(it != pieces.end()) {
-		// Piece designator is found
-	}
-	else {
-		// Piece designator not found
+	if(it == pieces.end()) {
 		return false;
 	}
 
@@ -258,6 +254,10 @@ bool Board::check_end_location(pair<char, char> start, pair<char, char> end) con
 // Moves the piece from the start position to the end position
 void Board::execute_move(pair<char, char> start, pair<char, char> end) {
 
+	// delete end piece if it exists:
+	if(_occ[end] != NULL) {
+		delete _occ[end];
+	}
 	// Scenario for Pawn
 	if((_occ[start]->to_ascii() == 'P') || (_occ[start]->to_ascii() == 'p')) {
 		// Pawn Promotion to a Queen
@@ -284,21 +284,6 @@ void Board::execute_move(pair<char, char> start, pair<char, char> end) {
 	}
 }
 
-// Reverses a move made
-// Intuition: Take the start and end locations, and assign 
-// the original start Piece* value to _occ[start] and the original
-// end Piece* value to _occ[end]
-// Successful execution of reverse_execute requires the user to 
-// save the Piece* pointers before using execute_move
-void Board::reverse_execute(pair<char, char> start, pair<char, char> end, Piece* first_piece, Piece* end_piece) {
-	_occ[start] = first_piece;
-	if(end_piece == NULL) {
-		_occ.erase(end);
-	}
-	else {
-		_occ[end] = end_piece;
-	}
-}
 
 // Clears the map so that a new map can be inserted
 void Board::clear_board() {
@@ -306,7 +291,7 @@ void Board::clear_board() {
 	// Theoretical code that should delete the pointers
 	// associated with the previous board
 	
-	for(map<pair<char, char>, Piece*>::iterator it = _occ.begin(); it != _occ.end(); ++it) {
+	for(map<pair<char, char>, Piece*>::const_iterator it = _occ.cbegin(); it != _occ.cend(); ++it) {
                 delete it->second;
 		_occ.erase(it);
 	

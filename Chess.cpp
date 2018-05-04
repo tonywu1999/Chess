@@ -49,11 +49,8 @@ bool Chess::make_move( std::pair< char , char > start , std::pair< char , char >
 {
 	// Get const pointers to the first and end piece
 	const Piece* first_piece = _board(start);
-	// const Piece* end_piece = _board(end);
+	const Piece* end_piece = _board(end);
 
-	// Get non-const pointers to the first and end piece
-	Piece* first = _board.get_piece_pointer(start);
-	Piece* last = _board.get_piece_pointer(end);
 
 	// Check if first_piece is NULL
 	if(first_piece == NULL) {
@@ -85,17 +82,18 @@ bool Chess::make_move( std::pair< char , char > start , std::pair< char , char >
 	}
 	
 	// Execute Move
-	_board.execute_move(start, end);
+	Board b = _board;
+	b.execute_move(start, end);
 
 	// Check if board is in check now
-	if(in_check(_turn_white)) {
+	if(in_p_check(_turn_white, b)) {
 		cout << "Move would result in your king in check" << endl;
-		_board.reverse_execute(start, end, first, last);
 		return false;
 	}
-	if(last != NULL) {
-		delete last;
-	}
+	
+	// Execute Move
+	_board.execute_move(start,end);
+	
 	// Change color of player:
 	if(_turn_white) {
 		_turn_white = false;
@@ -154,7 +152,6 @@ bool Chess::in_check( bool white ) const
 
 bool Chess::in_mate( bool white ) const
 {
-	Board b = _board;
 
 	// King is not in check, return false
 	if(!in_check(white)) {
@@ -164,24 +161,21 @@ bool Chess::in_mate( bool white ) const
 	pair<char, char> start;
 	
 	// Logic Check: Mate = no possible move for anything 
-	for(map<pair<char, char>, Piece*>::const_iterator it = b.occ().cbegin(); it != b.occ().cend(); ++it) {
+	for(map<pair<char, char>, Piece*>::const_iterator it = _board.occ().cbegin(); it != _board.occ().cend(); ++it) {
 		// Checks to make sure that the new piece is the same color
 		if(white == it->second->is_white()) {
 			start = it->first;
 			for(int i = 0; i < 8; i++) {
 				for(int j = 0; j < 8; j++) {
 					if(it->second->legal_move_shape(start, end)) {
-						if(b.path_is_clear(start,end)) {
-							if(b.check_end_location(start, end)) {
+						if(_board.path_is_clear(start,end)) {
+							if(_board.check_end_location(start, end)) {
 								// CHECK TO MAKE SURE THAT THE NEW BOARD STILL RETAINS CHECK
-								Piece* start_point = it->second;
-								Piece* end_point = b.get_piece_pointer(end);
+								Board b = _board;
 								b.execute_move(start, end);
 								if(!in_p_check(white, b)) {
-								 	delete end_point;
 									return false;
 								}
-								b.reverse_execute(start, end, start_point, end_point);
 								// DEFINE FIRST AND LAST
 							}
 						}
@@ -195,15 +189,12 @@ bool Chess::in_mate( bool white ) const
 		}
 	}
 
-// sidenote: wow holy shit that was a lot easier than I thought it would be.
-// Also, the code is a lot more concise
 	return true;
 }
 
 
 bool Chess::in_stalemate( bool white ) const
 {
-        Board b = _board;
 	
         pair<char, char> start;
         pair<char, char> end;
@@ -212,23 +203,20 @@ bool Chess::in_stalemate( bool white ) const
         for(char i = 'A'; i <= 'H'; i++) {
                 for(char j = '1'; j <= '8'; j++) {
                         end = make_pair(i, j);
-                        for(map<pair<char, char>, Piece*>::const_iterator it = b.occ().cbegin();
-                                        it!= b.occ().cend(); ++it) {
+                        for(map<pair<char, char>, Piece*>::const_iterator it =_board.occ().cbegin();
+                                        it!= _board.occ().cend(); ++it) {
 				if(white == (it->second)->is_white()) {
                                        	start = it->first;
 					if(it->second->legal_move_shape(start, end)) {
-						if(b.path_is_clear(start, end)) {
-							if(b.check_end_location(start, end)) {                                                        		
-								Piece* start_point = it->second;
-								Piece* end_point = b.get_piece_pointer(end);
+						if(_board.path_is_clear(start, end)) {
+							if(_board.check_end_location(start, end)) {                                                        		
+        							Board b = _board;
 								b.execute_move(start, end);	
 								// CHECK TO MAKE SURE THAT THE NEW BOARD STILL RETAINS CHECK
 								if(!in_p_check(white, b)) {
 								 	cout << start.first << start.second << " " << end.first << end.second << endl;
-									delete end_point;
 									return false;
 								}
-								b.reverse_execute(start, end, start_point, end_point);
 							}
 						}
                                         }
@@ -255,7 +243,17 @@ std::istream& operator >> ( std::istream& is , Chess& chess )
 	// clear_board() is a method in the Board class
 	chess._board.clear_board();
 	
+	char piece;
+	for(char number = '8'; number >= '1'; number--) {
+		for(char letter = 'A'; letter <= 'H'; letter++) {
+			is >> piece;
+			if(piece != '-') {
+				chess._board.add_piece(pair< char , char >( letter , number ) , piece );
+			}
+		}
+	}
 	// Loop through file which contains 8 rows and 8 columns of characters
+	/*
 	char piece;
 	char number = '8';
 	while (number > '0') {
@@ -264,13 +262,13 @@ std::istream& operator >> ( std::istream& is , Chess& chess )
 			is >> piece;
 			// Add piece if a location is not a '-' symbol
 			if(piece != '-') {
-				chess._board.add_piece(pair< char , char >( letter , number ) , piece );
 			}
 			letter = letter + 1;
 				
 		}
 		number = number - 1;
 	}
+	*/
 	// After 64 characters are read, this last reading
 	// reads the last character which determines if the board
 	// is at white or black's turn
