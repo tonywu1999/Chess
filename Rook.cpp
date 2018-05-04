@@ -4,7 +4,7 @@
 
 using std::pair;
 
-
+// Checks to see if the entered move is legal for the piece
 bool Rook::legal_move_shape( pair< char , char > start , pair< char , char > end ) const {	
 	
 	if(start.first < 'A' || start.first > 'H' || 
