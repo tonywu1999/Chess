@@ -174,6 +174,7 @@ bool Chess::in_mate( bool white ) const
 								Board b = _board;
 								b.execute_move(start, end);
 								if(!in_p_check(white, b)) {
+									cout << start.first << start.second << " " << end.first << end.second << endl;
 									return false;
 								}
 								// DEFINE FIRST AND LAST
